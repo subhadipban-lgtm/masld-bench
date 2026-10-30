@@ -1,0 +1,80 @@
+{
+  "MB-8601": {
+    "task": "MB-8601",
+    "n": 21,
+    "metric": "accuracy",
+    "logreg": {
+      "acc": 0.42857142857142855,
+      "ci": [
+        0.23809523809523808,
+        0.6190476190476191
+      ],
+      "chance": 0.3333333333333333,
+      "beats_chance": false,
+      "beats_majority": false
+    },
+    "hgb": {
+      "acc": 0.38095238095238093,
+      "ci": [
+        0.19047619047619047,
+        0.5714285714285714
+      ],
+      "chance": 0.3333333333333333,
+      "beats_chance": false,
+      "beats_majority": false
+    }
+  },
+  "MB-8602": {
+    "task": "MB-8602",
+    "n": 15,
+    "metric": "accuracy",
+    "logreg": {
+      "acc": 0.7333333333333333,
+      "ci": [
+        0.4666666666666667,
+        0.9333333333333333
+      ],
+      "chance": 0.5,
+      "beats_chance": false,
+      "beats_majority": false
+    },
+    "hgb": {
+      "acc": 0.5333333333333333,
+      "ci": [
+        0.26666666666666666,
+        0.8
+      ],
+      "chance": 0.5,
+      "beats_chance": false,
+      "beats_majority": false
+    }
+  },
+  "MB-8605": {
+    "task": "MB-8605",
+    "n": 21,
+    "metric": "mae",
+    "logreg": {
+      "mae": 0.7340686274509803,
+      "ci": [
+        0.5547925420168067,
+        0.9172312675070027
+      ],
+      "median_mae": 0.7142857142857143,
+      "beats_median": false
+    },
+    "hgb": {
+      "mae": 0.7340686274509803,
+      "ci": [
+        0.5547925420168067,
+        0.9172312675070027
+      ],
+      "median_mae": 0.7142857142857143,
+      "beats_median": false
+    }
+  },
+  "_gate": {
+    "any_family_beats_chance_or_majority": false,
+    "seed": 20260929,
+    "protocol": "StratifiedGroupKFold(n=5) by patient; 2000 bootstraps"
+  }
+}

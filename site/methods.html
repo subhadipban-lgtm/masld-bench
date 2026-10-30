@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methods — MASLD-Bench</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="methods">
+<header class="site">
+  <div class="wrap">
+    <div class="brand">MASLD<span class="accent">-</span>Bench</div>
+    <nav class="site">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="leaderboard.html" data-page="leaderboard">Leaderboard</a>
+      <a href="tasks.html" data-page="tasks">Tasks</a>
+      <a href="methods.html" data-page="methods">Methods</a>
+      <a href="models.html" data-page="models">Models</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <h2>Methods</h2>
+  <p class="lede" style="color:var(--dim)">The benchmark's scientific contribution is as much
+  <i>how</i> it measures as what it measures. Four disciplines, all pre-registered.</p>
+
+  <div class="card">
+    <h3>1 · Pre-registration and the frozen corpus</h3>
+    <p>Every analysis plan is frozen before any evaluation call is made. Prompt corpora are
+    checksummed (SHA-256 manifests) and never regenerated; tests are frozen before any training
+    data is added. Corrections — the Gubra label fix, the freeze-16 blood-corpus off-by-one — get
+    new freeze numbers and the corrupted artifacts are quarantined, never silently repaired.
+    <span class="mono">Column order is never evidence</span>: every label join must be verifiable
+    from the deposit itself.</p>
+  </div>
+  <div class="card">
+    <h3>2 · Paired significance (McNemar exact / Wilcoxon signed-rank)</h3>
+    <p>Headline comparisons are made on <b>identical items</b>, not on separately sampled
+    accuracies. The bracket's frontier draws were re-evaluated on the same 929-item frame so every
+    C2 contrast is paired. The discipline already paid for itself: the program's own unpaired
+    "win" evaporated once the bracket was completed and paired — reported, not hidden.</p>
+  </div>
+  <div class="card">
+    <h3>3 · Classical gates (the C4 regime split)</h3>
+    <p>Every family carries pre-registered logistic-regression / histogram-gradient-boosting gates
+    on the <i>same prompt strings</i> (grouped CV, 2,000 bootstraps, seed 20260929). The
+    LLM-vs-classical comparison on identical inputs is what turns "LLMs fail" into a precise,
+    testable statement about representation format — and what made the cfRNA inversion (C5)
+    discoverable.</p>
+  </div>
+  <div class="card">
+    <h3>4 · Label-noise control (dual-reader golds)</h3>
+    <p>Biopsy staging is reader-dependent. Instead of pretending otherwise, the MB-89xx anchor
+    freezes <b>both</b> independent pathologists' readings as separate task sets with
+    byte-identical prompts. The measured cap: 13 accuracy points for the classical reader,
+    ~3 for frontier LLMs, at κ = 0.384. Any machine-learning study on biopsy labels inherits this
+    ceiling; this benchmark is the first to measure it directly.</p>
+  </div>
+
+  <div class="card">
+    <h3>Decoding protocol (frozen)</h3>
+    <ul>
+      <li>Zero-shot, single pass, temperature 0.0, top_p 1.0</li>
+      <li>Invalid or unparseable answers count as errors (invalid-as-error)</li>
+      <li>Bootstrap 95% CIs, 10,000 resamples, seed 20260929</li>
+      <li>Frontier bracket: 12 systems via OpenRouter; compact models: greedy, newline-stopped</li>
+      <li>Training-exposure controls: masked-gene variants and trained-on-vs-held-out transfer tests</li>
+    </ul>
+  </div>
+
+  <div class="disclaimer"><b>Research use only.</b> These methods evaluate frozen retrospective
+  corpora; they do not validate any clinical use.</div>
+</div>
+
+<footer class="site"><div class="wrap">MASLD-Bench · methods · freeze <span class="mono">v3-freeze-17</span></div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

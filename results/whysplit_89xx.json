@@ -1,0 +1,319 @@
+{
+ "8901_anchor": {
+  "pos": 32,
+  "neg": 80,
+  "top_genes": [
+   {
+    "gene": "ENSG00000114019",
+    "symbol": "AMOTL2",
+    "auc": 0.716,
+    "deviation": 0.432,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000143248",
+    "symbol": "RGS5",
+    "auc": 0.716,
+    "deviation": 0.431,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000167861",
+    "symbol": "HID1",
+    "auc": 0.698,
+    "deviation": 0.395,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000132530",
+    "symbol": "XAF1",
+    "auc": 0.691,
+    "deviation": 0.383,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000072682",
+    "symbol": "P4HA2",
+    "auc": 0.691,
+    "deviation": 0.383,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000101489",
+    "symbol": "CELF4",
+    "auc": 0.68,
+    "deviation": 0.36,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000072310",
+    "symbol": "SREBF1",
+    "auc": 0.679,
+    "deviation": 0.358,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000049540",
+    "symbol": "ELN",
+    "auc": 0.679,
+    "deviation": 0.358,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000159788",
+    "symbol": "RGS12",
+    "auc": 0.675,
+    "deviation": 0.35,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000018280",
+    "symbol": "SLC11A1",
+    "auc": 0.675,
+    "deviation": 0.35,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000133742",
+    "symbol": "CA1",
+    "auc": 0.674,
+    "deviation": 0.348,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000182310",
+    "symbol": "SPACA6",
+    "auc": 0.672,
+    "deviation": 0.344,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000137726",
+    "symbol": "FXYD6",
+    "auc": 0.671,
+    "deviation": 0.342,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000138162",
+    "symbol": "TACC2",
+    "auc": 0.671,
+    "deviation": 0.341,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000240405",
+    "symbol": "SAMMSON",
+    "auc": 0.664,
+    "deviation": 0.328,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000069702",
+    "symbol": "TGFBR3",
+    "auc": 0.663,
+    "deviation": 0.325,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000214548",
+    "symbol": "MEG3",
+    "auc": 0.662,
+    "deviation": 0.325,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000137573",
+    "symbol": "SULF1",
+    "auc": 0.662,
+    "deviation": 0.325,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000115414",
+    "symbol": "FN1",
+    "auc": 0.661,
+    "deviation": 0.321,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000110076",
+    "symbol": "NRXN2",
+    "auc": 0.658,
+    "deviation": 0.316,
+    "celltype_gini": {}
+   }
+  ],
+  "n_markers_top20": 0,
+  "n_hepatocyte_markers_top20": 0,
+  "ablation_topk_acc": {
+   "5": 0.7143,
+   "10": 0.6786,
+   "20": 0.6518,
+   "50": 0.6875,
+   "200": 0.7232
+  },
+  "full_panel_oof": 0.7232
+ },
+ "8911_ext": {
+  "pos": 84,
+  "neg": 95,
+  "top_genes": [
+   {
+    "gene": "ENSG00000159147",
+    "symbol": "DONSON",
+    "auc": 0.705,
+    "deviation": 0.41,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000135931",
+    "symbol": "ARMC9",
+    "auc": 0.699,
+    "deviation": 0.399,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000244215",
+    "symbol": "LINC02016",
+    "auc": 0.685,
+    "deviation": 0.369,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000239332",
+    "symbol": "LINC01119",
+    "auc": 0.681,
+    "deviation": 0.362,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000202224",
+    "symbol": "Y_RNA",
+    "auc": 0.678,
+    "deviation": 0.355,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000100433",
+    "symbol": "KCNK10",
+    "auc": 0.675,
+    "deviation": 0.35,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000102287",
+    "symbol": "GABRE",
+    "auc": 0.673,
+    "deviation": 0.347,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000287504",
+    "symbol": "ENSG00000287504",
+    "auc": 0.671,
+    "deviation": 0.342,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000176720",
+    "symbol": "BOK",
+    "auc": 0.669,
+    "deviation": 0.338,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000121871",
+    "symbol": "SLITRK3",
+    "auc": 0.669,
+    "deviation": 0.337,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000114739",
+    "symbol": "ACVR2B",
+    "auc": 0.665,
+    "deviation": 0.33,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000163995",
+    "symbol": "ABLIM2",
+    "auc": 0.664,
+    "deviation": 0.328,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000143858",
+    "symbol": "SYT2",
+    "auc": 0.662,
+    "deviation": 0.324,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000169429",
+    "symbol": "CXCL8",
+    "auc": 0.662,
+    "deviation": 0.324,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000101958",
+    "symbol": "GLRA2",
+    "auc": 0.662,
+    "deviation": 0.323,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000171680",
+    "symbol": "PLEKHG5",
+    "auc": 0.66,
+    "deviation": 0.32,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000223652",
+    "symbol": "PRDM6-AS1",
+    "auc": 0.658,
+    "deviation": 0.315,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000168314",
+    "symbol": "MOBP",
+    "auc": 0.656,
+    "deviation": 0.313,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000007372",
+    "symbol": "PAX6",
+    "auc": 0.656,
+    "deviation": 0.312,
+    "celltype_gini": {}
+   },
+   {
+    "gene": "ENSG00000161267",
+    "symbol": "BDH1",
+    "auc": 0.653,
+    "deviation": 0.306,
+    "celltype_gini": {}
+   }
+  ],
+  "n_markers_top20": 0,
+  "n_hepatocyte_markers_top20": 0,
+  "ablation_topk_acc": {
+   "5": 0.6816,
+   "10": 0.6536,
+   "20": 0.6369,
+   "50": 0.6872,
+   "200": 0.6201
+  },
+  "full_panel_oof": 0.6201
+ },
+ "contrast_anchor": {
+  "agree_low_maxz": 0.923,
+  "agree_high_maxz": 0.679,
+  "spearman": -0.323
+ }
+}

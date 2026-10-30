@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tasks — MASLD-Bench</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="tasks">
+<header class="site">
+  <div class="wrap">
+    <div class="brand">MASLD<span class="accent">-</span>Bench</div>
+    <nav class="site">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="leaderboard.html" data-page="leaderboard">Leaderboard</a>
+      <a href="tasks.html" data-page="tasks">Tasks</a>
+      <a href="methods.html" data-page="methods">Methods</a>
+      <a href="models.html" data-page="models">Models</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <h2>Task families</h2>
+  <p>Every family is a frozen prompt corpus. Freeze discipline: SHA-256 manifests, test-before-train,
+  and any correction gets a new freeze number with the old artifacts quarantined — corrections are
+  published, not silently patched.</p>
+
+  <div class="card">
+    <h3><span class="badge acc">MB-20xx</span> Liver transcriptomics — the frozen test</h3>
+    <p>Bulk liver RNA-seq with biopsy endpoints: binary advanced fibrosis, F0–F4 staging (F-stage),
+    pairwise comparisons, and regression (fibrosis stage / NAS). Gold = biopsy. Includes the
+    EPos-only freeze after the documented Gubra label correction.</p>
+  </div>
+  <div class="card">
+    <h3><span class="badge acc">MB-85xx</span> Progression proxy</h3>
+    <p>Cross-sectional biopsy staging as a progression proxy (GSE185051, n=52). Binary
+    stable-vs-progressive and ordinal score. Pre-registered as a proxy, not true paired-biopsy
+    progression.</p>
+  </div>
+  <div class="card">
+    <h3><span class="badge acc">MB-86xx</span> Blood-proxy severity</h3>
+    <p>Whole-blood-cell RNA-seq with histology-graded severity (GSE267032, n=21 graded). Rebuilt at
+    freeze-16 after the header off-by-one that mislabeled the freeze-8 corpus — the corrupted
+    archives are quarantined and the correction is in the RUNLOG.</p>
+  </div>
+  <div class="card">
+    <h3><span class="badge acc">MB-87xx</span> Liver→plasma proteomics</h3>
+    <p>Masked-protein regression across plasma studies (MSV000094959, n=206–216) plus a platform
+    readout. The platform task measures batch separation and is labeled as such.</p>
+  </div>
+  <div class="card">
+    <h3><span class="badge acc">MB-88xx</span> Perturbation transfer</h3>
+    <p>Primary hepatocyte FFA perturbation (GSE247407, n=30, donor-grouped) as a held-out transfer
+    test for a 40-compound DRUG-seq train pool. The classical gate reads 0.833; LLMs sit at
+    chance — zero-shot and trained-on. The program's controlled negative.</p>
+  </div>
+  <div class="card">
+    <h3><span class="badge acc">MB-89xx</span> Plasma cell-free RNA — freeze-17 (newest family)</h3>
+    <p>Plasma cfRNA transcriptomes (S-BSST1614, Ghent; n=112 biopsy-anchored + 179 external
+    holdout). Label join verified 112/112 and 821/821 from the deposit itself. Three gold schemes
+    frozen as separate task sets:</p>
+    <ul>
+      <li><b>MB-8901/8902/8905</b> — biopsy Brunt F0–F4, reader A (UZA) gold</li>
+      <li><b>MB-8921/8922/8925</b> — identical prompt strings, reader B (Verheij/Doukas) gold:
+        the dual-reader label-noise control (κ = 0.384)</li>
+      <li><b>MB-8911/8912/8915</b> — clinical-consensus F0–F4 gold, one sample per patient,
+        per-item provenance flags, batch-clean (p = 0.332)</li>
+    </ul>
+    <p>This is the family where the regime split inverts: frontier LLMs match the logistic
+    regression on the binary task — the first LLM-positive omics-in-prompt result in the program.</p>
+  </div>
+
+  <div class="card">
+    <h3>Train-side pools</h3>
+    <p>MB-10xx/11xx clinical and external liver pools, MB-12xx staged-liver pool (freeze-15),
+    MB-40xx geometric manifold, MB-61xx/62xx/63xx knowledge corpora, MB-88xx DRUG-seq pool —
+    all train-side only; the frozen tests above are never trained on.</p>
+  </div>
+
+  <div class="disclaimer"><b>Research use only.</b> Task labels come from public deposits with
+  verifiable joins; cohort 2 of MB-89xx uses clinical-consensus staging, disclosed per item.</div>
+</div>
+
+<footer class="site"><div class="wrap">MASLD-Bench · task families · freeze <span class="mono">v3-freeze-17</span></div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

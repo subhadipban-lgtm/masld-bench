@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MASLD-Bench — the disease-specific omics-LLM benchmark</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="home">
+<header class="site">
+  <div class="wrap">
+    <div class="brand">MASLD<span class="accent">-</span>Bench</div>
+    <nav class="site">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="leaderboard.html" data-page="leaderboard">Leaderboard</a>
+      <a href="tasks.html" data-page="tasks">Tasks</a>
+      <a href="methods.html" data-page="methods">Methods</a>
+      <a href="models.html" data-page="models">Models</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>The disease-specific, histology-grounded<br><span class="accent">omics-LLM benchmark.</span></h1>
+    <p class="lede">MASLD-Bench evaluates large language models on metabolic dysfunction-associated
+      steatotic liver disease biology — biopsy-staged transcriptomics, blood and plasma cfRNA,
+      perturbation transfer — under a frozen-corpus, pre-registered, paired-statistics discipline.
+      It is the disease-specific replication and extension of the LongevityBench design,
+      with the statistical rigor and honest negatives that mean-rank evaluations cannot express.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card"><div class="kpi">19</div><div>frozen prompt corpora, SHA-256-manifested, test-before-train</div></div>
+    <div class="card"><div class="kpi">12</div><div>frontier models in the paired bracket + 2 classical gates + 3 compact fine-tunes</div></div>
+    <div class="card"><div class="kpi">929</div><div>identical-item paired frame (McNemar exact / Wilcoxon signed-rank)</div></div>
+    <div class="card"><div class="kpi">2</div><div>independent pathologists' readings frozen as separate golds — a label-noise control</div></div>
+  </div>
+
+  <h2>The five claims</h2>
+  <div class="card">
+    <h3>C1 · Infrastructure</h3>
+    <p>19 frozen corpora spanning liver transcriptomics with biopsy endpoints, DNA methylation,
+    blood-proxy severity, liver→plasma proteomics, plasma cfRNA, and perturbation transfer —
+    with SHA-256 manifests and documented corrections (never buried).</p>
+  </div>
+  <div class="card">
+    <h3>C2 · Compact vs frontier</h3>
+    <p>Under paired testing, the 1.7B fine-tune wins fibrosis regression outright
+    (MB-2005 MAE 1.226 vs the best frontier's 1.529) while tying on binary tasks —
+    and the 8B adds little more. Scale is not the binding constraint.</p>
+  </div>
+  <div class="card">
+    <h3>C3 · The honest ledger</h3>
+    <p>Novel task families with pre-registered classical gates: where a logistic regression reads
+    signal (perturbation 0.833), LLMs sit at majority — zero-shot <i>and</i> trained-on.
+    Documented negatives are results.</p>
+  </div>
+  <div class="card">
+    <h3>C4 · The representation-format regime split</h3>
+    <p>Classical ML and LLMs occupy disjoint regimes on fixed-panel omics… <b>except on plasma
+    cfRNA (C5)</b>, where frontier models are statistically indistinguishable from the linear
+    reader. The barrier is conditional on the data — and five genes carry the readable signal.</p>
+  </div>
+  <div class="card">
+    <h3>C5 · Label noise, quantified</h3>
+    <p>The same predictions score 0.389 against reader A's biopsy golds and 0.259 against reader B's
+    (κ = 0.384). Dual-reader staging variability is a measurable performance ceiling —
+    this benchmark is the first to freeze both readers and report the gap.</p>
+  </div>
+
+  <div class="disclaimer">
+    <b>Research use only.</b> MASLD-Bench and its fine-tuned models are research artifacts —
+    not diagnostic, prognostic, or clinical tools. Nothing here is validated for patient care.
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    MASLD-Bench · freeze <span class="mono">v3-freeze-17</span> · results updated 2026-10-30 ·
+    manuscript in preparation. Built on public data (GEO / BioStudies / Zenodo) with verifiable label joins.
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
