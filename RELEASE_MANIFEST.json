@@ -1,8 +1,8 @@
 {
  "release_version": "2026.11.10-eligible.1",
- "generated_utc": "2026-11-10T13:45:07.051622+00:00",
+ "generated_utc": "2026-11-10T13:45:20.259508+00:00",
  "base_commit": "e5a3690431cf8c2e093d7d899e49b987a9216f7d",
- "code_commit": "29a62c0a745a5f7fae09b35d73470f75bf1081af",
+ "code_commit": "0498191c2319d2b312a5b7944b40726d446eda00",
  "status": "local review candidate; not published",
  "authoritative_files": [
   {
@@ -93,7 +93,7 @@
   {
    "path": "results/eligible/RESULT_EXPORT_VERSION.json",
    "bytes": 851,
-   "sha256": "3f5b99c5c18ebef84efdb820ebf19f29cf519990d0ce660a326458341c710472"
+   "sha256": "a2ae513f79500fa96a7b418cae9fc0f3213456d27fc7164bd17800f07202102b"
   },
   {
    "path": "results/tables/table2_tissue_coverage.csv",
