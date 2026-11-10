@@ -1,0 +1,27 @@
+{
+ "export_version": "2026.11.10-eligible.1",
+ "code_commit": "29a62c0a745a5f7fae09b35d73470f75bf1081af",
+ "generated_by": "analysis/rescore_tissue_eligible.py",
+ "files": [
+  {
+   "path": "results/eligible/tissue_eligible_summary.tsv",
+   "bytes": 12564,
+   "sha256": "0af5384d2946440226014eefe17853ba6f1098f8c3d87a579c278e9d558a4895"
+  },
+  {
+   "path": "results/eligible/tissue_eligible_ranks.tsv",
+   "bytes": 683,
+   "sha256": "a287597f2c3458e9ef54f5f3d2125912530d6a9c5926922589bb6d869e54fc76"
+  },
+  {
+   "path": "results/eligible/tissue_archive_coverage_audit.tsv",
+   "bytes": 6197,
+   "sha256": "501086ffb9cd2590a8a6917ad5413f1551f0810f482ea4ac1d913cecfa2466f2"
+  },
+  {
+   "path": "results/eligible/tissue_regression_joint_valid.tsv",
+   "bytes": 105,
+   "sha256": "8362f5af214739031caaacad797d91b11285d6c2945aee24fabcfd0615411503"
+  }
+ ]
+}
