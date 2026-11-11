@@ -2,6 +2,14 @@
 
 ## 2026.11.10-eligible.1 — local release candidate
 
+- Removed the superseded static-site scaffold (`site/`) and the October results
+  drafts (`docs/RESULTS_DRAFT.md`, `docs/RESULTS_DRAFT_MB89xx_SECTIONS.md`)
+  inherited from `main`. They carried withdrawn claims ("first LLM-positive",
+  "statistically tied", a universal ~13-point reader-noise ceiling, kappa
+  0.384) and the historical 297-row leaderboard. All remain recoverable in Git
+  history and the private workspace archive; the site is to be regenerated from
+  the eligible export before any deployment.
+
 - Added the corrected cfRNA production analyses and aggregate outputs.
 - Added the 17-model eligible tissue analysis with explicit exclusion of the
   three checkpoints exposed to MB-12xx.
