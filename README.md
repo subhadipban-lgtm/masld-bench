@@ -1,54 +1,95 @@
-# MASLD-Bench
+# MASLD-Bench — authoritative analysis release
 
-The disease-specific, histology-grounded omics-LLM benchmark for metabolic
-dysfunction-associated steatotic liver disease. Frozen prompt corpora with
-biopsy endpoints, a paired-significance evaluation discipline, and the first
-LLM-positive (and first label-noise-controlled) disease family.
+**Release candidate:** `2026.11.10-eligible.1`  
+**Status:** local review candidate; not yet published or pushed.  
+**Research use only — not a diagnostic or clinical tool.**
 
-**Research use only** — not a diagnostic or clinical tool.
+This branch contains the corrected cfRNA analysis and the eligible-model tissue
+analysis. It does not treat the historical 297-row or 275-row leaderboards as
+the current result export.
 
-## What's here
+## Authoritative outputs
 
-| Path | Contents |
-|---|---|
-| `scripts/` | corpus builders, scorers, gates, paired statistics, frontier runner, whysplit attribution |
-| `colab/` | the numbered pipeline notebooks (01–11): prompt construction, baselines, fine-tuning, evals, the Drive-bridge worker, HF merge/push |
-| `analysis-plan/` | the frozen pre-registrations (v1, C3 addendum, MB-89xx) |
-| `docs/` | results draft (C1–C5), whitespace/positioning analysis, blood-cohort hunt, HF landscape, MASLD-Claw agent spec |
-| `results/` | leaderboard (297 rows), paired significance tables, classical gates, whysplit — the evidence layer |
-| `prompts/MANIFEST.json` | freeze state (v3-freeze-17), rules, corpus counts |
-| `hf-release/` | model cards + the v7 training pipeline for the HF repos |
-| `site/` | the static benchmark site (`masldbenchmarks-site`) |
+| Analysis | Production entry point | Aggregate output |
+|---|---|---|
+| Corrected cfRNA analyses | `analysis/corrections_v2.py` | `analysis/v2_corrections.json` |
+| Supporting cfRNA binary metrics | `analysis/revised_metrics.py` | `analysis/gate_recompute.json`, `analysis/llm_binary_metrics.json`, `analysis/reader_sensitivity.json` |
+| Fixed-prediction reader comparison | `analysis/reader_by_model.py` | `analysis/reader_by_model.json` |
+| Eligible-model tissue analysis | `analysis/rescore_tissue_eligible.py` | `analysis/tissue_eligible.json`, `results/eligible/` |
 
-**Not in this repo (on the Drive, by design):** the frozen prompt corpora
-(`prompts/MB-*.jsonl.gz`), source data (`data/`), model checkpoints
-(`checkpoints/`), and evaluation archives (`results/frontier_runs/`).
-They stay on the Google Drive workspace; the corpora and checkpoints will be
-mirrored publicly with the preprint.
+The tissue roster contains 17 models with all five tissue tasks and explicitly
+excludes Qwen3-0.6B v6, Qwen3-1.7B v6 and Qwen3-8B v7 because their fine-tuning
+mixtures contained the GSE135251 test samples. Single-sample tasks use common
+archived items. Pairwise results are grouped by exact evaluation manifest.
+Regression reports conditional and joint-valid MAE, coverage, in-domain counts
+and failure-aware sensitivity. The exposed checkpoints are diagnostics, not
+primary generalization evidence.
 
-## Models
+## What is not included
 
-- `Subhadip-igtm/masld-bench-qwen3-1.7b-sft-v6` (+`-adapter`)
-- `Subhadip-igtm/masld-bench-qwen3-8b-sft-v7` (+`-adapter`)
+- Frozen expression-bearing prompts, source matrices, subject-level per-item
+  predictions, model response archives, checkpoints or training caches.
+- Private manuscript comments, author-decision drafts, correspondence or
+  unapproved manuscript versions.
+- Credentials, `.DS_Store`, `__pycache__` or local audit directories.
 
-## Headline results
+Public sample identifiers and per-item outputs require artifact-specific
+permission/provenance review before any future release. Source-derived data are
+not covered by the software license; see `DATA_ACCESS_AND_LICENSES.md`.
 
-- C4 regime split: frontier LLMs sit at class-prior on fixed-panel omics
-  wherever a linear model reads signal — **except on plasma cfRNA (MB-89xx)**,
-  where they are statistically tied with the logistic regression.
-- Scale axis: the 8B does not beat the 1.7B where it matters; scale is not
-  the binding constraint.
-- Label noise: dual-reader biopsy staging (κ = 0.384) caps classical accuracy
-  by ~13 points — measured directly, for the first time in any benchmark.
+## Portable reproduction
 
-## Reproducibility
+Python >=3.10 is required. Install the pinned dependencies, then point
+`MASLD_DATA_ROOT` at a private data directory containing `prompts/`, `data/`
+and `results/frontier_runs/`:
 
-Every scored number traces to `results/`. Freeze discipline: corpora are
-SHA-256-manifested and never regenerated; corrections get new freeze numbers
-with quarantine. Seed 20260929 everywhere. Colab notebooks must keep torchao
-**absent** (see the dependency cells).
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements-release.txt
+export MASLD_DATA_ROOT=/path/to/private/masld-data
+.venv/bin/python -m pytest analysis/tests -q
+PYTHON="$PWD/.venv/bin/python" bash scripts/reproduce_release.sh
+```
 
-## Status
+The private data root must also contain `results/gates_mb89xx.json`, which the
+supporting binary-gate analysis reads unconditionally as its legacy comparison
+record. Without it, `analysis/revised_metrics.py` fails with a clear
+file-not-found error.
 
-Manuscript in preparation. Preprint, corpus mirrors, and public model
-repos land together.
+Subject-level per-item predictions are never written into the public checkout.
+To regenerate Supplementary Figure S6 from its source data, export them
+privately first:
+
+```bash
+export MASLD_PER_ITEM_DIR=/path/to/private/per-item-export
+```
+
+Without that variable, the reproduction regenerates every other figure and
+skips S6 with a notice.
+
+The reproduction script writes aggregate outputs into this checkout and never
+requires the author's local audit folder. Raw-data access requirements are
+listed in `DATA_ACCESS_AND_LICENSES.md`.
+
+Optional manuscript build/verification is available only with an author-approved
+private package:
+
+```bash
+export MASLD_REVISION_DIR=/path/to/private/manuscript-package
+.venv/bin/python code/build_revised.py
+.venv/bin/python code/verify_revision.py
+```
+
+## Release documents
+
+- `CHANGELOG.md` — correction and release history.
+- `docs/release/PROVENANCE_AND_LIMITATIONS.md` — dataset accessions, exposure
+  map, evaluated-item rules, prompt-identity limits and missing-source inventory.
+- `DATA_ACCESS_AND_LICENSES.md` — file-specific data/access notes.
+- `RELEASE_MANIFEST.json` — commit and artifact hashes, regenerated for this
+  release candidate.
+- `results/RESULTS_AUTHORITY.md` — result-version and supersession policy.
+- `CITATION.cff`, `LICENSE`, `environment-lock.txt`.
+
+Legacy scripts remain only as historical artifacts with warnings in
+`scripts/README.md`; they are not the default scoring path.

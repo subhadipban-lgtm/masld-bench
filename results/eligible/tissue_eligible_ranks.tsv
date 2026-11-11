@@ -1,0 +1,18 @@
+model	MB-2001	MB-2002	MB-2003	MB-2005	MB-2006	mean_rank_single4	mean_rank_all5_same_manifest
+Qwen3-1.7B v3	1	5	5	2	1	2.25	2.8
+Nemotron 120B	1	1		10	3	3.75	
+Qwen3-1.7B v5	1	2	4	1	14	4.5	4.4
+GPT-4.1-mini	1	5	8	7	8	5.25	5.8
+Qwen2.5 72B	1	13	11	5	6	6.25	7.2
+DeepSeek Chat	7	10		6	4	6.75	
+GPT-4.1	9	5	10	9	5	7.0	7.6
+Qwen3-0.6B v3	12	3	2	3	14	8.0	6.8
+Qwen3-0.6B v5	1	4	6	16	11	8.0	7.6
+GPT-4o-mini	10	9	12	12	7	9.5	10.0
+Mercury-2.5	8	10	7	13	9	10.0	9.4
+Qwen3 235B	11	8	14	11	10	10.0	10.8
+Llama 3.3 70B	14	15	13	4	12	11.25	11.6
+Claude Sonnet 4.5	17	16	1	15	2	12.5	10.2
+Nova Pro	15	10	9	14	13	13.0	12.2
+GPT-5.6 Luna	16	17	3	8	17	14.5	12.2
+Gemini 2.5 Pro	13	14		17	17	15.25	

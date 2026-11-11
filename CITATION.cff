@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: >-
+  Analysis software for MASLD-Bench. The manuscript author list and
+  publication citation are pending author confirmation; this file cites the
+  software release only.
+title: "MASLD-Bench: corrected cfRNA and eligible-model tissue analysis"
+type: software
+version: 2026.11.10-eligible.1
+date-released: 2026-11-10
+license: Apache-2.0
+repository-code: https://github.com/subhadipban-lgtm/masld-bench
+authors:
+  - family-names: Banerjee
+    given-names: Subhadip

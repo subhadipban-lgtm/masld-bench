@@ -1,0 +1,167 @@
+{
+ "8901_anchor_binary": {
+  "legacy": {
+   "logreg": {
+    "acc": 0.7232,
+    "ci": [
+     0.6429,
+     0.8036
+    ],
+    "chance": 0.5,
+    "majority": 0.3036,
+    "beats_chance": true,
+    "beats_majority": true
+   },
+   "hgb": {
+    "acc": 0.6875,
+    "ci": [
+     0.5982,
+     0.7768
+    ],
+    "chance": 0.5,
+    "majority": 0.3036,
+    "beats_chance": true,
+    "beats_majority": true
+   }
+  },
+  "corrected": {
+   "n": 112,
+   "accuracy": 0.7232142857142857,
+   "ci": [
+    0.6428571428571429,
+    0.8035714285714286
+   ],
+   "majority_corrected": 0.7142857142857143,
+   "majority_legacy_reported": 0.30357142857142855,
+   "beats_majority_corrected": false,
+   "beats_majority_reported_legacy": true,
+   "n_majority": 80,
+   "n_minority": 32
+  }
+ },
+ "8911_ext_binary": {
+  "legacy": {
+   "logreg": {
+    "acc": 0.6201,
+    "ci": [
+     0.5529,
+     0.6872
+    ],
+    "chance": 0.5,
+    "majority": 0.3352,
+    "beats_chance": true,
+    "beats_majority": true
+   },
+   "hgb": {
+    "acc": 0.5754,
+    "ci": [
+     0.5028,
+     0.648
+    ],
+    "chance": 0.5,
+    "majority": 0.3352,
+    "beats_chance": true,
+    "beats_majority": true
+   }
+  },
+  "corrected": {
+   "n": 179,
+   "accuracy": 0.6201117318435754,
+   "ci": [
+    0.5529329608938548,
+    0.6871508379888268
+   ],
+   "majority_corrected": 0.5307262569832403,
+   "majority_legacy_reported": 0.33519553072625696,
+   "beats_majority_corrected": true,
+   "beats_majority_reported_legacy": true,
+   "n_majority": 95,
+   "n_minority": 84
+  }
+ },
+ "8921_amc_binary": {
+  "legacy": {
+   "logreg": {
+    "acc": 0.6296,
+    "ci": [
+     0.537,
+     0.7222
+    ],
+    "chance": 0.5,
+    "majority": 0.3056,
+    "beats_chance": true,
+    "beats_majority": true
+   },
+   "hgb": {
+    "acc": 0.6204,
+    "ci": [
+     0.5278,
+     0.713
+    ],
+    "chance": 0.5,
+    "majority": 0.3056,
+    "beats_chance": true,
+    "beats_majority": true
+   }
+  },
+  "corrected": {
+   "n": 108,
+   "accuracy": 0.6296296296296297,
+   "ci": [
+    0.5370370370370371,
+    0.7222222222222222
+   ],
+   "majority_corrected": 0.6759259259259259,
+   "majority_legacy_reported": 0.3055555555555556,
+   "beats_majority_corrected": false,
+   "n_majority": 73,
+   "n_minority": 35
+  }
+ },
+ "binary_majority_baselines": [
+  {
+   "task": "MB-8901",
+   "n": 112,
+   "minority": 32,
+   "corrected": 0.7142857142857143,
+   "legacy": 0.3036,
+   "cause": "five-class majority passed into binary gate"
+  },
+  {
+   "task": "MB-8911",
+   "n": 179,
+   "minority": 84,
+   "corrected": 0.5307262569832403,
+   "legacy": 0.3352,
+   "cause": "five-class majority passed into binary gate"
+  },
+  {
+   "task": "MB-8921",
+   "n": 108,
+   "minority": 35,
+   "corrected": 0.6759259259259259,
+   "legacy": 0.3056,
+   "cause": "five-class majority passed into binary gate"
+  }
+ ],
+ "normalization": {
+  "methods_claim": "per-sample z-score across the panel",
+  "implementation": "per-gene z-score across samples",
+  "consequence": "describe the frozen corpus accurately; label the analysis transductive"
+ },
+ "auprc": {
+  "implementation": "argsort without tie grouping; trapezoid over PR curve labelled average precision",
+  "defect": "row-order dependent under score ties",
+  "demonstration": {
+   "labels_1100_all_tied": 1.0,
+   "labels_0011_all_tied": 0.291667,
+   "sklearn_average_precision_both": 0.5
+  }
+ },
+ "regression_scoring": {
+  "implementation": "MAE over parsed values only; validity reported separately",
+  "declared_policy": "invalid as error",
+  "consequence": "conditional MAE is optimistic when validity is low",
+  "serialization_bug": "`if lo` / `if hi` drops a legitimate 0.0 bound"
+ }
+}

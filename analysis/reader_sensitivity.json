@@ -1,0 +1,22 @@
+{
+ "n_joint": 108,
+ "reader_agreement": {
+  "exact": 56,
+  "exact_n": 108,
+  "exact_fraction": 0.5185185185185185,
+  "unweighted_kappa": 0.39980763065084957,
+  "quadratic_kappa": 0.8086553907209676,
+  "linear_kappa": 0.6412162162162163,
+  "binary_kappa": 0.7146341463414635
+ },
+ "five_class_fixed_predictions": {
+  "accuracy_vs_uza": 0.3888888888888889,
+  "accuracy_vs_amc": 0.25925925925925924,
+  "difference": 0.12962962962962965,
+  "note": "same OOF predictions, same 108 samples: reader-label sensitivity, not a ceiling"
+ },
+ "binary_fixed_predictions": {
+  "accuracy_vs_uza": 0.7962962962962963,
+  "accuracy_vs_amc": 0.75
+ }
+}

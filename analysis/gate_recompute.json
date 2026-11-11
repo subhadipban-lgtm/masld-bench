@@ -1,0 +1,85 @@
+{
+ "MB-8901_logreg": {
+  "n": 112,
+  "accuracy": 0.7232142857142857,
+  "ci": [
+   0.6428571428571429,
+   0.8035714285714286
+  ],
+  "majority_corrected": 0.7142857142857143,
+  "majority_legacy_reported": 0.30357142857142855,
+  "beats_majority_corrected": false,
+  "beats_majority_reported_legacy": true,
+  "n_majority": 80,
+  "n_minority": 32
+ },
+ "MB-8901_hgb": {
+  "n": 112,
+  "accuracy": 0.6875,
+  "ci": [
+   0.5982142857142857,
+   0.7767857142857143
+  ],
+  "majority_corrected": 0.7142857142857143,
+  "majority_legacy_reported": 0.30357142857142855,
+  "beats_majority_corrected": false,
+  "beats_majority_reported_legacy": true,
+  "n_majority": 80,
+  "n_minority": 32
+ },
+ "MB-8911_logreg": {
+  "n": 179,
+  "accuracy": 0.6201117318435754,
+  "ci": [
+   0.5529329608938548,
+   0.6871508379888268
+  ],
+  "majority_corrected": 0.5307262569832403,
+  "majority_legacy_reported": 0.33519553072625696,
+  "beats_majority_corrected": true,
+  "beats_majority_reported_legacy": true,
+  "n_majority": 95,
+  "n_minority": 84
+ },
+ "MB-8911_hgb": {
+  "n": 179,
+  "accuracy": 0.5754189944134078,
+  "ci": [
+   0.5027932960893855,
+   0.6480446927374302
+  ],
+  "majority_corrected": 0.5307262569832403,
+  "majority_legacy_reported": 0.33519553072625696,
+  "beats_majority_corrected": false,
+  "beats_majority_reported_legacy": true,
+  "n_majority": 95,
+  "n_minority": 84
+ },
+ "MB-8921_logreg": {
+  "n": 108,
+  "accuracy": 0.6296296296296297,
+  "ci": [
+   0.5370370370370371,
+   0.7222222222222222
+  ],
+  "majority_corrected": 0.6759259259259259,
+  "majority_legacy_reported": 0.3055555555555556,
+  "beats_majority_corrected": false,
+  "n_majority": 73,
+  "n_minority": 35
+ },
+ "MB-8921_hgb": {
+  "n": 108,
+  "accuracy": 0.6203703703703703,
+  "ci": [
+   0.5277777777777778,
+   0.7129629629629629
+  ],
+  "majority_corrected": 0.6759259259259259,
+  "majority_legacy_reported": 0.3055555555555556,
+  "beats_majority_corrected": false,
+  "n_majority": 73,
+  "n_minority": 35
+ },
+ "ordinal_superseded_by": "v2_corrections.json part3_ordinal; the legacy LogisticRegression/HGBClassifier ordinal blocks are no longer computed in this artifact"
+}

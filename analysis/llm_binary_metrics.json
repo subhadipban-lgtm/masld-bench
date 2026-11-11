@@ -1,0 +1,618 @@
+{
+ "amazon__nova-pro-v1": {
+  "MB-8901": {
+   "n": 112,
+   "valid": 59,
+   "invalid": 53,
+   "tp": 0,
+   "fn": 32,
+   "tn": 45,
+   "fp": 0,
+   "accuracy": 0.4017857142857143,
+   "sensitivity": 0.0,
+   "specificity": 0.5625,
+   "balanced_accuracy": 0.28125,
+   "validity": 0.5267857142857143,
+   "n_yes_predicted": 0,
+   "accuracy_ci": [
+    0.30357142857142855,
+    0.49107142857142855
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 53
+  },
+  "MB-8911": {
+   "n": 179,
+   "valid": 74,
+   "invalid": 105,
+   "tp": 4,
+   "fn": 80,
+   "tn": 32,
+   "fp": 3,
+   "accuracy": 0.2011173184357542,
+   "sensitivity": 0.047619047619047616,
+   "specificity": 0.3368421052631579,
+   "balanced_accuracy": 0.19223057644110275,
+   "validity": 0.4134078212290503,
+   "n_yes_predicted": 7,
+   "accuracy_ci": [
+    0.1452513966480447,
+    0.26256983240223464
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 105
+  }
+ },
+ "anthropic__claude-sonnet-4.5": {
+  "MB-8901": {
+   "n": 112,
+   "valid": 54,
+   "invalid": 58,
+   "tp": 7,
+   "fn": 25,
+   "tn": 8,
+   "fp": 30,
+   "accuracy": 0.13392857142857142,
+   "sensitivity": 0.21875,
+   "specificity": 0.1,
+   "balanced_accuracy": 0.159375,
+   "validity": 0.48214285714285715,
+   "n_yes_predicted": 37,
+   "accuracy_ci": [
+    0.07142857142857142,
+    0.19642857142857142
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 58
+  },
+  "MB-8911": {
+   "n": 179,
+   "valid": 105,
+   "invalid": 74,
+   "tp": 41,
+   "fn": 43,
+   "tn": 14,
+   "fp": 43,
+   "accuracy": 0.30726256983240224,
+   "sensitivity": 0.4880952380952381,
+   "specificity": 0.14736842105263157,
+   "balanced_accuracy": 0.3177318295739348,
+   "validity": 0.5865921787709497,
+   "n_yes_predicted": 84,
+   "accuracy_ci": [
+    0.24022346368715083,
+    0.3743016759776536
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 74
+  }
+ },
+ "deepseek__deepseek-chat": {
+  "MB-8901": {
+   "n": 112,
+   "valid": 87,
+   "invalid": 25,
+   "tp": 5,
+   "fn": 27,
+   "tn": 52,
+   "fp": 8,
+   "accuracy": 0.5089285714285714,
+   "sensitivity": 0.15625,
+   "specificity": 0.65,
+   "balanced_accuracy": 0.403125,
+   "validity": 0.7767857142857143,
+   "n_yes_predicted": 13,
+   "accuracy_ci": [
+    0.41964285714285715,
+    0.5982142857142857
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 25
+  },
+  "MB-8911": {
+   "n": 179,
+   "valid": 133,
+   "invalid": 46,
+   "tp": 13,
+   "fn": 71,
+   "tn": 65,
+   "fp": 3,
+   "accuracy": 0.43575418994413406,
+   "sensitivity": 0.15476190476190477,
+   "specificity": 0.6842105263157895,
+   "balanced_accuracy": 0.41948621553884713,
+   "validity": 0.7430167597765364,
+   "n_yes_predicted": 16,
+   "accuracy_ci": [
+    0.3687150837988827,
+    0.5139664804469274
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 46
+  }
+ },
+ "google__gemini-2.5-pro": {
+  "MB-8901": {
+   "n": 112,
+   "valid": 2,
+   "invalid": 110,
+   "tp": 0,
+   "fn": 32,
+   "tn": 0,
+   "fp": 2,
+   "accuracy": 0.0,
+   "sensitivity": 0.0,
+   "specificity": 0.0,
+   "balanced_accuracy": 0.0,
+   "validity": 0.017857142857142856,
+   "n_yes_predicted": 2,
+   "accuracy_ci": [
+    0.0,
+    0.0
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 110
+  },
+  "MB-8911": {
+   "n": 179,
+   "valid": 5,
+   "invalid": 174,
+   "tp": 2,
+   "fn": 82,
+   "tn": 1,
+   "fp": 2,
+   "accuracy": 0.01675977653631285,
+   "sensitivity": 0.023809523809523808,
+   "specificity": 0.010526315789473684,
+   "balanced_accuracy": 0.017167919799498745,
+   "validity": 0.027932960893854747,
+   "n_yes_predicted": 4,
+   "accuracy_ci": [
+    0.0,
+    0.03910614525139665
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 174
+  }
+ },
+ "meta-llama__llama-3.3-70b-instruct": {
+  "MB-8901": {
+   "n": 112,
+   "valid": 37,
+   "invalid": 75,
+   "tp": 1,
+   "fn": 31,
+   "tn": 28,
+   "fp": 1,
+   "accuracy": 0.25892857142857145,
+   "sensitivity": 0.03125,
+   "specificity": 0.35,
+   "balanced_accuracy": 0.190625,
+   "validity": 0.33035714285714285,
+   "n_yes_predicted": 2,
+   "accuracy_ci": [
+    0.17857142857142858,
+    0.3392857142857143
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 75
+  },
+  "MB-8911": {
+   "n": 179,
+   "valid": 69,
+   "invalid": 110,
+   "tp": 4,
+   "fn": 80,
+   "tn": 34,
+   "fp": 1,
+   "accuracy": 0.2122905027932961,
+   "sensitivity": 0.047619047619047616,
+   "specificity": 0.35789473684210527,
+   "balanced_accuracy": 0.20275689223057644,
+   "validity": 0.3854748603351955,
+   "n_yes_predicted": 5,
+   "accuracy_ci": [
+    0.15628491620111734,
+    0.2737430167597765
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 110
+  }
+ },
+ "nvidia__nemotron-3-super-120b-a12b:free": {
+  "MB-8901": {
+   "n": 112,
+   "valid": 0,
+   "invalid": 112,
+   "tp": 0,
+   "fn": 32,
+   "tn": 0,
+   "fp": 0,
+   "accuracy": 0.0,
+   "sensitivity": 0.0,
+   "specificity": 0.0,
+   "balanced_accuracy": 0.0,
+   "validity": 0.0,
+   "n_yes_predicted": 0,
+   "accuracy_ci": [
+    0.0,
+    0.0
+   ],
+   "operational_errors": 112,
+   "invalid_answers": 0
+  },
+  "MB-8911": {
+   "n": 179,
+   "valid": 0,
+   "invalid": 179,
+   "tp": 0,
+   "fn": 84,
+   "tn": 0,
+   "fp": 0,
+   "accuracy": 0.0,
+   "sensitivity": 0.0,
+   "specificity": 0.0,
+   "balanced_accuracy": 0.0,
+   "validity": 0.0,
+   "n_yes_predicted": 0,
+   "accuracy_ci": [
+    0.0,
+    0.0
+   ],
+   "operational_errors": 179,
+   "invalid_answers": 0
+  }
+ },
+ "openai__gpt-4.1-mini": {
+  "MB-8901": {
+   "n": 112,
+   "valid": 112,
+   "invalid": 0,
+   "tp": 3,
+   "fn": 29,
+   "tn": 68,
+   "fp": 12,
+   "accuracy": 0.6339285714285714,
+   "sensitivity": 0.09375,
+   "specificity": 0.85,
+   "balanced_accuracy": 0.471875,
+   "validity": 1.0,
+   "n_yes_predicted": 15,
+   "accuracy_ci": [
+    0.5446428571428571,
+    0.7232142857142857
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 0
+  },
+  "MB-8911": {
+   "n": 179,
+   "valid": 177,
+   "invalid": 2,
+   "tp": 5,
+   "fn": 79,
+   "tn": 92,
+   "fp": 1,
+   "accuracy": 0.5418994413407822,
+   "sensitivity": 0.05952380952380952,
+   "specificity": 0.968421052631579,
+   "balanced_accuracy": 0.5139724310776942,
+   "validity": 0.9888268156424581,
+   "n_yes_predicted": 6,
+   "accuracy_ci": [
+    0.4692737430167598,
+    0.6201117318435754
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 2
+  }
+ },
+ "openai__gpt-4.1": {
+  "MB-8901": {
+   "n": 112,
+   "valid": 14,
+   "invalid": 98,
+   "tp": 1,
+   "fn": 31,
+   "tn": 5,
+   "fp": 5,
+   "accuracy": 0.05357142857142857,
+   "sensitivity": 0.03125,
+   "specificity": 0.0625,
+   "balanced_accuracy": 0.046875,
+   "validity": 0.125,
+   "n_yes_predicted": 6,
+   "accuracy_ci": [
+    0.017857142857142856,
+    0.09821428571428571
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 98
+  },
+  "MB-8911": {
+   "n": 179,
+   "valid": 17,
+   "invalid": 162,
+   "tp": 3,
+   "fn": 81,
+   "tn": 7,
+   "fp": 4,
+   "accuracy": 0.055865921787709494,
+   "sensitivity": 0.03571428571428571,
+   "specificity": 0.07368421052631578,
+   "balanced_accuracy": 0.05469924812030075,
+   "validity": 0.09497206703910614,
+   "n_yes_predicted": 7,
+   "accuracy_ci": [
+    0.027932960893854747,
+    0.0893854748603352
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 162
+  }
+ },
+ "openai__gpt-4o-mini": {
+  "MB-8901": {
+   "n": 112,
+   "valid": 105,
+   "invalid": 7,
+   "tp": 0,
+   "fn": 32,
+   "tn": 75,
+   "fp": 0,
+   "accuracy": 0.6696428571428571,
+   "sensitivity": 0.0,
+   "specificity": 0.9375,
+   "balanced_accuracy": 0.46875,
+   "validity": 0.9375,
+   "n_yes_predicted": 0,
+   "accuracy_ci": [
+    0.5803571428571429,
+    0.7589285714285714
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 7
+  },
+  "MB-8911": {
+   "n": 179,
+   "valid": 176,
+   "invalid": 3,
+   "tp": 0,
+   "fn": 84,
+   "tn": 93,
+   "fp": 0,
+   "accuracy": 0.5195530726256983,
+   "sensitivity": 0.0,
+   "specificity": 0.9789473684210527,
+   "balanced_accuracy": 0.48947368421052634,
+   "validity": 0.9832402234636871,
+   "n_yes_predicted": 0,
+   "accuracy_ci": [
+    0.44692737430167595,
+    0.5921787709497207
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 3
+  }
+ },
+ "openai__gpt-5.6-luna": {
+  "MB-8901": {
+   "n": 112,
+   "valid": 72,
+   "invalid": 40,
+   "tp": 11,
+   "fn": 21,
+   "tn": 36,
+   "fp": 17,
+   "accuracy": 0.41964285714285715,
+   "sensitivity": 0.34375,
+   "specificity": 0.45,
+   "balanced_accuracy": 0.396875,
+   "validity": 0.6428571428571429,
+   "n_yes_predicted": 28,
+   "accuracy_ci": [
+    0.33035714285714285,
+    0.5178571428571429
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 40
+  },
+  "MB-8911": {
+   "n": 179,
+   "valid": 102,
+   "invalid": 77,
+   "tp": 23,
+   "fn": 61,
+   "tn": 38,
+   "fp": 15,
+   "accuracy": 0.3407821229050279,
+   "sensitivity": 0.27380952380952384,
+   "specificity": 0.4,
+   "balanced_accuracy": 0.33690476190476193,
+   "validity": 0.5698324022346368,
+   "n_yes_predicted": 38,
+   "accuracy_ci": [
+    0.2737430167597765,
+    0.4134078212290503
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 77
+  }
+ },
+ "qwen3-1.7b-masld-v6": {
+  "MB-8901": {
+   "n": 112,
+   "valid": 112,
+   "invalid": 0,
+   "tp": 3,
+   "fn": 29,
+   "tn": 68,
+   "fp": 12,
+   "accuracy": 0.6339285714285714,
+   "sensitivity": 0.09375,
+   "specificity": 0.85,
+   "balanced_accuracy": 0.471875,
+   "validity": 1.0,
+   "n_yes_predicted": 15,
+   "accuracy_ci": [
+    0.5446428571428571,
+    0.7232142857142857
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 0
+  },
+  "MB-8911": {
+   "n": 179,
+   "valid": 179,
+   "invalid": 0,
+   "tp": 15,
+   "fn": 69,
+   "tn": 74,
+   "fp": 21,
+   "accuracy": 0.4972067039106145,
+   "sensitivity": 0.17857142857142858,
+   "specificity": 0.7789473684210526,
+   "balanced_accuracy": 0.4787593984962406,
+   "validity": 1.0,
+   "n_yes_predicted": 36,
+   "accuracy_ci": [
+    0.4245810055865922,
+    0.5698324022346368
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 0
+  }
+ },
+ "qwen3-8b-masld-v7": {
+  "MB-8901": {
+   "n": 112,
+   "valid": 112,
+   "invalid": 0,
+   "tp": 6,
+   "fn": 26,
+   "tn": 60,
+   "fp": 20,
+   "accuracy": 0.5892857142857143,
+   "sensitivity": 0.1875,
+   "specificity": 0.75,
+   "balanced_accuracy": 0.46875,
+   "validity": 1.0,
+   "n_yes_predicted": 26,
+   "accuracy_ci": [
+    0.5,
+    0.6785714285714286
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 0
+  },
+  "MB-8911": {
+   "n": 179,
+   "valid": 179,
+   "invalid": 0,
+   "tp": 11,
+   "fn": 73,
+   "tn": 83,
+   "fp": 12,
+   "accuracy": 0.5251396648044693,
+   "sensitivity": 0.13095238095238096,
+   "specificity": 0.8736842105263158,
+   "balanced_accuracy": 0.5023182957393484,
+   "validity": 1.0,
+   "n_yes_predicted": 23,
+   "accuracy_ci": [
+    0.45251396648044695,
+    0.5977653631284916
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 0
+  }
+ },
+ "qwen__qwen-2.5-72b-instruct": {
+  "MB-8901": {
+   "n": 112,
+   "valid": 105,
+   "invalid": 7,
+   "tp": 0,
+   "fn": 32,
+   "tn": 74,
+   "fp": 0,
+   "accuracy": 0.6607142857142857,
+   "sensitivity": 0.0,
+   "specificity": 0.925,
+   "balanced_accuracy": 0.4625,
+   "validity": 0.9375,
+   "n_yes_predicted": 0,
+   "accuracy_ci": [
+    0.5714285714285714,
+    0.75
+   ],
+   "operational_errors": 7,
+   "invalid_answers": 0
+  },
+  "MB-8911": {
+   "n": 179,
+   "valid": 179,
+   "invalid": 0,
+   "tp": 0,
+   "fn": 84,
+   "tn": 95,
+   "fp": 0,
+   "accuracy": 0.5307262569832403,
+   "sensitivity": 0.0,
+   "specificity": 1.0,
+   "balanced_accuracy": 0.5,
+   "validity": 1.0,
+   "n_yes_predicted": 0,
+   "accuracy_ci": [
+    0.4581005586592179,
+    0.6034916201117311
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 0
+  }
+ },
+ "qwen__qwen3-235b-a22b-2507": {
+  "MB-8901": {
+   "n": 112,
+   "valid": 112,
+   "invalid": 0,
+   "tp": 26,
+   "fn": 6,
+   "tn": 26,
+   "fp": 54,
+   "accuracy": 0.4642857142857143,
+   "sensitivity": 0.8125,
+   "specificity": 0.325,
+   "balanced_accuracy": 0.56875,
+   "validity": 1.0,
+   "n_yes_predicted": 80,
+   "accuracy_ci": [
+    0.375,
+    0.5537946428571416
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 0
+  },
+  "MB-8911": {
+   "n": 179,
+   "valid": 179,
+   "invalid": 0,
+   "tp": 61,
+   "fn": 23,
+   "tn": 45,
+   "fp": 50,
+   "accuracy": 0.5921787709497207,
+   "sensitivity": 0.7261904761904762,
+   "specificity": 0.47368421052631576,
+   "balanced_accuracy": 0.599937343358396,
+   "validity": 1.0,
+   "n_yes_predicted": 111,
+   "accuracy_ci": [
+    0.5195530726256983,
+    0.664804469273743
+   ],
+   "operational_errors": 0,
+   "invalid_answers": 0
+  }
+ }
+}
