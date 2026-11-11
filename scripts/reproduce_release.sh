@@ -22,6 +22,7 @@ cd "$REPO_ROOT"
 "$PYTHON" analysis/rescore_tissue_eligible.py
 "$PYTHON" code/regenerate_eligible_figs.py
 "$PYTHON" code/make_revised_figs.py
+"$PYTHON" code/make_supplementary_schematics.py
 "$PYTHON" -m pytest analysis/tests -q
 
 printf '\nAuthoritative outputs are in analysis/ and results/eligible/.\n'

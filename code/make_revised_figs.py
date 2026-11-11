@@ -11,6 +11,15 @@ from pathlib import Path
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
+
+_savefig = Figure.savefig
+def _dual_save(self, fname, *a, **kw):
+    _savefig(self, fname, *a, **kw)
+    q = Path(str(fname))
+    if q.suffix == '.png':
+        _savefig(self, q.with_suffix('.pdf'), bbox_inches='tight', pad_inches=.06)
+Figure.savefig = _dual_save
 import numpy as np
 import pandas as pd
 
@@ -74,7 +83,7 @@ def fig6():
     ax.set_ylabel("Out-of-fold accuracy")
     ax.set_ylim(0.53, 0.85)
     ax.legend(frameon=False, fontsize=5.2, loc="lower left")
-    ax.set_title("Plasma anchor: every contract's interval spans the majority rate",
+    ax.set_title("Plasma reference cohort: every contract's interval spans the majority rate",
                  loc="left", fontsize=6.8, pad=6)
     fig.savefig(OUT / "Figure_6_concentration_corrected.png")
     plt.close(fig)

@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Regenerate all figures affected by the eligible-model tissue analysis."""
+"""Regenerate all figures affected by the eligible-model tissue analysis.
+
+Cohort wording follows the manuscript: "reference cohort" (112 samples) and
+"second cfRNA cohort" (179 patients); the earlier "anchor"/"extension"
+shorthand is not used in figure text. Each figure is written as PNG and PDF.
+"""
 import csv, json, math, os
 from pathlib import Path
 import numpy as np
@@ -7,6 +12,15 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
+from matplotlib.figure import Figure
+
+_savefig = Figure.savefig
+def _dual_save(self, fname, *a, **kw):
+    _savefig(self, fname, *a, **kw)
+    p = Path(str(fname))
+    if p.suffix == '.png':
+        _savefig(self, p.with_suffix('.pdf'), bbox_inches='tight', pad_inches=.06)
+Figure.savefig = _dual_save
 
 DR = Path(os.environ.get(
     'MASLD_DATA_ROOT',
@@ -46,7 +60,7 @@ with open(TAB/'figure2_eligible_ranks.csv','w',newline='') as f:
 
 # ---------- Figure 2: rank heatmaps ----------
 cmap = LinearSegmentedColormap.from_list('r',['#12324f','#2a6f97','#8ecae6','#f4f1e8'])
-fig, axes = plt.subplots(1,2,figsize=(7.4,6.4),gridspec_kw={'width_ratios':[1.35,1],'wspace':0.22})
+fig, axes = plt.subplots(1,2,figsize=(7.4,6.4),gridspec_kw={'width_ratios':[1.35,1],'wspace':0.85})
 tasks=['MB-2001','MB-2002','MB-2005','MB-2006','MB-2003']
 labels=['Binary\n(n=163)','5-class\n(n=163)','Fibrosis MAE\n(n=162)','NAS MAE\n(n=163)','Pairwise\n(shared n=300)']
 M=np.full((len(ranks),len(tasks)),np.nan)
@@ -76,7 +90,7 @@ for j,t in enumerate(plasma_tasks):
         if prev is None or abs(acc[(m,t)]-prev)>1e-12: rank=i+1
         PM[pmodels.index(m),j]=rank;prev=acc[(m,t)]
 axes[1].imshow(PM,cmap=cmap,aspect='auto',vmin=1,vmax=14)
-axes[1].set_xticks(range(3));axes[1].set_xticklabels(['Anchor','Extension','AMC reader'],fontsize=5.6)
+axes[1].set_xticks(range(3));axes[1].set_xticklabels(['Reference','Second\ncohort','AMC reader'],fontsize=5.6)
 axes[1].set_yticks(range(len(pmodels)));axes[1].set_yticklabels([REN.get(m,m) for m in pmodels],fontsize=5.2)
 for i in range(PM.shape[0]):
     for j in range(3):
@@ -84,7 +98,7 @@ for i in range(PM.shape[0]):
 axes[1].set_title('B  Plasma binary ranks',loc='left',fontsize=6.4,pad=7)
 fig.savefig(FIG/'Figure_2_ranks.png');plt.close(fig)
 
-# ---------- Figure 3: eligible tissue + plasma anchor ----------
+# ---------- Figure 3: eligible tissue + plasma reference cohort ----------
 fig,axes=plt.subplots(1,2,figsize=(7.4,4.9),gridspec_kw={'wspace':0.62})
 rows=[r for r in summary if r['roster']=='eligible' and r['task']=='MB-2001']
 rows.sort(key=lambda r:float(r['accuracy']))
@@ -127,7 +141,8 @@ for r in ranks:
     name=r['model'];c=TEAL if name in COMPACT else NAVY
     ax.plot(range(5),vals,'-o',ms=2.6,lw=.7,color=c,alpha=.55)
     if name in ['Claude Sonnet 4.5','Qwen3-0.6B v3','GPT-5.6 Luna','Qwen3-1.7B v5']:
-        ax.text(4.05,vals[-1],name,fontsize=5.4,color=c,va='center')
+        # Avoid overlapping labels; model values are in Supplementary Table S2.
+        ax.annotate(name, (4, vals[-1]), xytext=(4.05, vals[-1] + (-0.4 if name == 'Qwen3-0.6B v3' else 0.4 if name == 'Qwen3-1.7B v5' else 0)), fontsize=5.4, color=c, va='center', arrowprops=dict(arrowstyle='-', color=c, lw=.4))
 ax.set_xticks(range(5));ax.set_xticklabels(xlabels,fontsize=5.5)
 ax.set_ylim(17.5,.5);ax.set_ylabel('Rank (1 = best; missing = different pairwise manifest)')
 ax.set_title('Eligible-model rank instability across answer formats',loc='left',fontsize=7,pad=7)
@@ -140,7 +155,7 @@ for ax,task,title in zip(axes,['MB-2005','MB-2006'],['A  Fibrosis stage (n=162)'
     for r in rr:
         name=REN[r['model']];c=TEAL if name in COMPACT else NAVY
         ax.scatter(float(r['mae']),float(r['spearman']),s=18,c=c,alpha=.8)
-        if name in ['Qwen3-1.7B v5','Qwen3-1.7B v3','Llama 3.3 70B','GPT-4.1-mini','Nemotron 120B']:
+        if False:  # Avoid overlapping labels; model values are in Supplementary Table S2.
             ax.annotate(name,(float(r['mae']),float(r['spearman'])),fontsize=5.0,xytext=(3,3),textcoords='offset points')
     ax.set_xscale('log');ax.set_xlabel('Conditional MAE (log scale)');ax.set_ylabel('Spearman ρ')
     ax.axhline(0,color=GREY,lw=.5);ax.set_title(title,loc='left',fontsize=6.8,pad=7)
@@ -149,8 +164,8 @@ fig.savefig(FIG/'Figure_5_regression.png');plt.close(fig)
 # ---------- Figure S1: best model per developer, eligible only ----------
 devs={'OpenAI':['GPT-4.1','GPT-4.1-mini','GPT-4o-mini','GPT-5.6 Luna'],'Anthropic':['Claude Sonnet 4.5'],'Google':['Gemini 2.5 Pro'],'Meta':['Llama 3.3 70B'],'Amazon':['Nova Pro'],'NVIDIA':['Nemotron 120B'],'DeepSeek':['DeepSeek Chat'],'Alibaba':['Qwen2.5 72B','Qwen3 235B'],'Compact v3/v5':sorted(COMPACT)}
 dev_models={v:k for k,ms in devs.items() for v in ms}
-fig,axes=plt.subplots(1,5,figsize=(9.0,3.4),gridspec_kw={'wspace':.35})
-for ax,task in zip(axes,['MB-2001','MB-2002','MB-2003','MB-2005','MB-2006']):
+fig,axes=plt.subplots(1,4,figsize=(8.0,3.4),gridspec_kw={'wspace':.35})
+for ax,task in zip(axes,['MB-2001','MB-2002','MB-2005','MB-2006']):
     rr=[r for r in summary if r['task']==task and (r['roster']=='eligible' or r['roster'].startswith('pairwise_manifest'))]
     bydev={d:[] for d in devs}
     for r in rr:
@@ -175,29 +190,18 @@ for ax,task in zip(axes,['MB-2001','MB-2002','MB-2003','MB-2005','MB-2006']):
     ax.set_title(task,fontsize=6.2)
 fig.savefig(SUP/'Figure_S1.png');plt.close(fig)
 
-# ---------- Figure S2 panel A eligible; B-D unchanged source data ----------
-fig,axes=plt.subplots(1,4,figsize=(9.6,5.2),gridspec_kw={'wspace':.5})
-lb={}
-with open(DR/'results/leaderboard.csv') as f:
-    for r in csv.DictReader(f):lb[(r['model'],r['task'])]=r
-for ax,task,title,maj,chance in [
-    (axes[0],'MB-2002','A  Tissue five-class (eligible)',tissue['aligned_label_distributions']['MB-2002']['majority_accuracy'],.2),
-    (axes[1],'MB-8601','B  Blood proxy, three-class',.381,.333),
-    (axes[2],'MB-8902','C  Plasma five-class, anchor',.304,.2),
-    (axes[3],'MB-8912','D  Plasma five-class, extension',.335,.2)]:
-    if task=='MB-2002':
-        rr=[(REN[r['model']],float(r['accuracy']),float(r['ci_lo']),float(r['ci_hi'])) for r in summary if r['roster']=='eligible' and r['task']==task]
-    else:
-        rr=[(REN.get(m,m),float(r['value']),float(r['ci_lo']),float(r['ci_hi'])) for (m,t),r in lb.items() if t==task]
-    rr.sort(key=lambda x:x[1]);y=np.arange(len(rr))
-    for i,(name,v,lo,hi) in enumerate(rr):
-        c=TEAL if name in COMPACT else NAVY
-        ax.hlines(i,lo,hi,color=c,lw=.6,alpha=.5);ax.scatter(v,i,s=12,c=c)
-    ax.set_yticks(y);ax.set_yticklabels([r[0] for r in rr],fontsize=5.3)
-    if maj is not None:ax.axvline(maj,ls='-',color=GREY,lw=.7,label=f'majority {maj:.3f}')
-    ax.axvline(chance,ls=(0,(2,2)),color=GREY,lw=.7,label=f'chance {chance:.3f}')
-    ax.legend(frameon=False,fontsize=4.8,loc='lower right');ax.set_title(title,loc='left',pad=7,fontsize=6.4)
-    ax.set_xlim(0,1.02);ax.set_ylim(-.8,len(rr)-.2)
+# ---------- Figure S2: eligible tissue only; historical blood/cfRNA panels excluded ----------
+fig,ax=plt.subplots(figsize=(6.8,5.8))
+rr=[(REN[r['model']],float(r['accuracy']),float(r['ci_lo']),float(r['ci_hi'])) for r in summary if r['roster']=='eligible' and r['task']=='MB-2002']
+rr.sort(key=lambda x:x[1])
+for i,(name,v,lo,hi) in enumerate(rr):
+    c=TEAL if name in COMPACT else NAVY
+    ax.hlines(i,lo,hi,color=c,lw=.9);ax.scatter(v,i,color=c,s=18)
+ax.set_yticks(range(len(rr)));ax.set_yticklabels([x[0] for x in rr],fontsize=8)
+ax.axvline(43/163,color=GREY,lw=1,label='Observed majority 43/163 = 0.264')
+ax.axvline(.2,color=GREY,ls='--',lw=1,label='Uniform-choice chance 0.200')
+ax.set_xlim(0,.45);ax.set_xlabel('Five-class accuracy');ax.set_title('Eligible tissue models on 163 aligned items',loc='left')
+ax.legend(frameon=False,fontsize=7,loc='lower right')
 fig.savefig(SUP/'Figure_S2.png');plt.close(fig)
 
 # ---------- Figure S3: AMC from fixed-prediction reader rescore ----------
@@ -209,8 +213,8 @@ def boot_acc(correct,n,seed=20260929):
     return float(np.percentile(means,2.5)),float(np.percentile(means,97.5))
 fig,axes=plt.subplots(1,3,figsize=(10.6,5.6),gridspec_kw={'wspace':.45})
 for ax,task,title,maj,gkey in [
-    (axes[0],'MB-8901','A  Plasma binary, anchor',.7143,'MB-8901_logreg'),
-    (axes[1],'MB-8911','B  Plasma binary, extension',.5307,'MB-8911_logreg'),
+    (axes[0],'MB-8901','A  Plasma binary, reference cohort',.7143,'MB-8901_logreg'),
+    (axes[1],'MB-8911','B  Plasma binary, second cohort',.5307,'MB-8911_logreg'),
     (axes[2],'MB-8921','C  Plasma binary, AMC gold (fixed predictions)',.6759,'MB-8921_logreg')]:
     rr=[]
     if task!='MB-8921':
