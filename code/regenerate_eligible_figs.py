@@ -164,7 +164,7 @@ fig.savefig(FIG/'Figure_5_regression.png');plt.close(fig)
 # ---------- Figure S1: best model per developer, eligible only ----------
 devs={'OpenAI':['GPT-4.1','GPT-4.1-mini','GPT-4o-mini','GPT-5.6 Luna'],'Anthropic':['Claude Sonnet 4.5'],'Google':['Gemini 2.5 Pro'],'Meta':['Llama 3.3 70B'],'Amazon':['Nova Pro'],'NVIDIA':['Nemotron 120B'],'DeepSeek':['DeepSeek Chat'],'Alibaba':['Qwen2.5 72B','Qwen3 235B'],'Compact v3/v5':sorted(COMPACT)}
 dev_models={v:k for k,ms in devs.items() for v in ms}
-fig,axes=plt.subplots(1,4,figsize=(8.0,3.4),gridspec_kw={'wspace':.35})
+fig,axes=plt.subplots(1,4,figsize=(8.6,3.4),gridspec_kw={'wspace':.8})
 for ax,task in zip(axes,['MB-2001','MB-2002','MB-2005','MB-2006']):
     rr=[r for r in summary if r['task']==task and (r['roster']=='eligible' or r['roster'].startswith('pairwise_manifest'))]
     bydev={d:[] for d in devs}

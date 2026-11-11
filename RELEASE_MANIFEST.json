@@ -1,8 +1,8 @@
 {
  "release_version": "2026.11.10-eligible.1",
- "generated_utc": "2026-11-11T12:24:37.903859+00:00",
+ "generated_utc": "2026-11-11T12:39:11.548445+00:00",
  "base_commit": "e5a3690431cf8c2e093d7d899e49b987a9216f7d",
- "code_commit": "8d137b5ec4c533171515556c551e6a8ca0a32b3b",
+ "code_commit": "31a0d012dd73563dfdbb8751255b76f9a9009e8b",
  "status": "local review candidate; not published",
  "authoritative_files": [
   {
@@ -77,8 +77,8 @@
   },
   {
    "path": "code/regenerate_eligible_figs.py",
-   "bytes": 18882,
-   "sha256": "fcd193348d54a2f4a43aed7fa6c025e45bf054085077e0a0e9c5408a71ba6079"
+   "bytes": 18881,
+   "sha256": "35620bb648736474d93953f6fe6a83d38f152f4be9e66e76f9a1e22720d41dd9"
   },
   {
    "path": "code/make_release_manifest.py",
@@ -93,7 +93,7 @@
   {
    "path": "results/eligible/RESULT_EXPORT_VERSION.json",
    "bytes": 851,
-   "sha256": "8884c996133a55381fcc5e38215efae3f2d51d8f662e563ce1d0274cb76fa90a"
+   "sha256": "37ca22b7ec18db9fd229db45ee4ddc265811623a601c0067ffe3bb9ea54e7910"
   },
   {
    "path": "results/tables/table2_tissue_coverage.csv",
@@ -202,8 +202,8 @@
   },
   {
    "path": "figures_supplementary/Figure_S1.png",
-   "bytes": 208645,
-   "sha256": "f0aed67daab129c2fc6b2677949541599b1e6ff4cbf56246e7ce41be67663127"
+   "bytes": 210516,
+   "sha256": "9560df325a59c85b231fb03a6490036e8427c20ee014a6d25ed2f4618c08346a"
   },
   {
    "path": "figures_supplementary/Figure_S2.png",
