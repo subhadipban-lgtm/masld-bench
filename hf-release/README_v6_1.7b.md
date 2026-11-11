@@ -80,7 +80,30 @@ model = PeftModel.from_pretrained(
   do not treat outputs as diagnostic information.
 - **Not for medical use. Not validated on patients.**
 
+## Provenance and data
+
+- **Benchmark package (Zenodo, access restricted until publication):**
+  concept DOI 10.5281/zenodo.23836159, current version
+  10.5281/zenodo.23855439.
+- **Retrospective registration (frozen analysis plans + run log):**
+  https://osf.io/4vhbs/
+- **Gated source cohort:** plasma cell-free RNA, Ghent (EGA
+  EGAD50000000775 / study EGAS50000000545) under the Ghent DAC Data Usage
+  Agreement. The model was trained only on train-side, non-gated corpora
+  wording; no per-sample gated values ship with these repositories.
+- **License:** Apache-2.0 (weights and adapters).
+
+## Contact
+
+Corresponding author: Wim Vanden Berghe
+(wim.vandenberghe@uantwerpen.be), Department of Biomedical Sciences,
+University of Antwerp. Authors: Subhadip Banerjee, Rawiwan Charoensub
+(Medicinal Plant Innovation Centre, Mae Fah Luang University, Chiang Rai,
+Thailand), Wim Vanden Berghe.
+
 ## Citation
 
-MASLD-Bench: a disease-specific omics-LLM benchmark with histology
-endpoints. Manuscript in preparation (2026).
+Banerjee, S., Charoensub, R., Vanden Berghe, W. MASLD-Bench: a
+multi-domain benchmark of language models on liver-omics tasks, with
+plasma cfRNA fibrosis staging as a success case. Manuscript in preparation
+(2026); benchmark package archived at 10.5281/zenodo.23836159.
