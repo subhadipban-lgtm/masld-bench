@@ -8,12 +8,13 @@ Wilcoxon signed-rank become available (analysis plan sec.8).
 
 Output: results/frontier_runs/qwen3-0.6b-masld__MB-20xx_PAIRED.jsonl.gz
 """
+import os
 import gzip, json, os, re, time, collections
 import numpy as np
 import torch
 
 T0 = time.time()
-ROOT = "/Users/subhadipbanerjee/masld-llm"
+ROOT = os.environ.get("MASLD_DATA_ROOT", ".") + ""
 REF = f"{ROOT}/results/frontier_runs/nvidia__nemotron-3-super-120b-a12b:free__MB-20xx.jsonl.gz"
 TEST = f"{ROOT}/prompts/MB-20xx_liver_test.jsonl.gz"
 OUT = f"{ROOT}/results/frontier_runs/qwen3-0.6b-masld__MB-20xx_PAIRED.jsonl.gz"

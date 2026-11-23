@@ -11,8 +11,8 @@ from rdkit.Chem import AllChem
 
 RDLogger.DisableLog("rdApp.*")
 T0 = time.time()
-IN = "/Users/subhadipbanerjee/masld-llm/drug-discovery/screening/top5k.smi"
-OUT = "/Users/subhadipbanerjee/masld-llm/drug-discovery/screening/top5k_3d.sdf"
+IN = os.environ.get("MASLD_DATA_ROOT", ".") + "/drug-discovery/screening/top5k.smi"
+OUT = os.environ.get("MASLD_DATA_ROOT", ".") + "/drug-discovery/screening/top5k_3d.sdf"
 
 writer = Chem.SDWriter(OUT)
 n_ok, n_fail = 0, 0

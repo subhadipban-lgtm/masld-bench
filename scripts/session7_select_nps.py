@@ -16,8 +16,8 @@ T0 = time.time()
 SEED = 20260929
 rng = random.Random(SEED)
 
-LIB = "/Users/subhadipbanerjee/masld-llm/drug-discovery/library/unified_np_library.smi"
-OUT_DIR = "/Users/subhadipbanerjee/masld-llm/drug-discovery/screening"
+LIB = os.environ.get("MASLD_DATA_ROOT", ".") + "/drug-discovery/library/unified_np_library.smi"
+OUT_DIR = os.environ.get("MASLD_DATA_ROOT", ".") + "/drug-discovery/screening"
 import os; os.makedirs(OUT_DIR, exist_ok=True)
 
 N_CAND = 60_000

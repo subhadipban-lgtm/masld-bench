@@ -8,6 +8,7 @@ inside the family.soft files, collapses to gene level (max-mean probe),
 rebuilds MB-11xx on unified gene space, and re-runs the ML baselines
 (full pool, feature-matched) for comparison against the frozen-test anchor.
 """
+import os
 import gzip, json, os, re, sys, time
 
 import numpy as np
@@ -18,7 +19,7 @@ SEED = 20260929
 import random as _random
 rng = _random.Random(SEED)
 
-ROOT = "/Users/subhadipbanerjee/masld-llm"
+ROOT = os.environ.get("MASLD_DATA_ROOT", ".") + ""
 sys.path.insert(0, f"{ROOT}/scripts")
 from build_mb10xx import (VERBALIZATIONS, pick, write_jsonl, top_genes,
                           clinical_block, render_profile, standardize_sample,

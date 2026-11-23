@@ -7,3 +7,5 @@ __pycache__/
 .secrets.env
 *.log
 outputs/
+node_modules/
+.pytest_cache/

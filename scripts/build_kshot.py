@@ -15,10 +15,11 @@ Design:
   - Selection strategies: 'balanced' (stages F0-F4 covered evenly) vs 'random'
   - Format: demonstrations first as worked examples, then the query
 """
+import os
 import gzip, json, os, random, re, sys, time
 
 T0 = time.time()
-ROOT = "/Users/subhadipbanerjee/masld-llm"
+ROOT = os.environ.get("MASLD_DATA_ROOT", ".") + ""
 SEED = 20260929
 
 def load_jsonl(path):

@@ -9,6 +9,7 @@ Models: ElasticNet (linear) + HistGradientBoosting (nonlinear) per format:
   binary (F3-F4), multiclass (F0-F4), regression (stage 0-4)
 plus a majority-class reference and a clinical-only variant (no genes).
 """
+import os
 import gzip, json, os, re, sys, time
 
 import numpy as np
@@ -17,7 +18,7 @@ from sklearn.ensemble import HistGradientBoostingClassifier, HistGradientBoostin
 from sklearn.linear_model import ElasticNetCV, LogisticRegression
 
 T0 = time.time()
-ROOT = "/Users/subhadipbanerjee/masld-llm"
+ROOT = os.environ.get("MASLD_DATA_ROOT", ".") + ""
 PROMPTS = f"{ROOT}/prompts"
 RESULTS = f"{ROOT}/results"
 os.makedirs(RESULTS, exist_ok=True)

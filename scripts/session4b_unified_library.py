@@ -11,6 +11,7 @@ Sources (audited 2026-09-29):
 Output: drug-discovery/library/unified_np_library.smi (SMILES \t source_id \t MW \t LogP)
 with dedup by InChIKey, RDKit filters (MW 250-600, Crippen LogP 0-5).
 """
+import os
 import csv, glob, gzip, io, json, time, zipfile
 
 from rdkit import Chem, RDLogger
@@ -18,7 +19,7 @@ from rdkit.Chem import Descriptors, Crippen
 
 RDLogger.DisableLog("rdApp.*")
 T0 = time.time()
-OUT = "/Users/subhadipbanerjee/masld-llm/drug-discovery/library"
+OUT = os.environ.get("MASLD_DATA_ROOT", ".") + "/drug-discovery/library"
 
 def passes(mol):
     mw = Descriptors.MolWt(mol)
@@ -51,7 +52,7 @@ def add(smi, source_id, source_name):
 
 # ---- 1. COCONUT lite 09-2026 (newest base) ----
 n = 0
-z = zipfile.ZipFile("/Users/subhadipbanerjee/Downloads/summit_poc/coconut_csv_lite-09-2026.zip")
+z = zipfile.ZipFile("/path/to/Downloads/summit_poc/coconut_csv_lite-09-2026.zip")
 with z.open("coconut_csv_lite-09-2026.csv") as f:
     reader = csv.DictReader(io.TextIOWrapper(f, encoding="utf-8"))
     for row in reader:
@@ -62,7 +63,7 @@ print(f"coconut 2026: scanned {n}, kept so far {len(kept)} ({time.time()-T0:.0f}
 
 # ---- 2. NPAtlas ----
 n = 0
-with open("/Users/subhadipbanerjee/NPAtlas/NPAtlas_download_2024_09.tsv", errors="ignore") as f:
+with open(os.environ.get("NPATLAS_TSV", "data/NPAtlas_download_2024_09.tsv"), errors="ignore") as f:
     reader = csv.DictReader(f, delimiter="\t")
     for row in reader:
         n += 1
@@ -72,7 +73,7 @@ print(f"npatlas: scanned {n}, kept {len(kept)} ({time.time()-T0:.0f}s)", flush=T
 
 # ---- 3. NP-MRD shards ----
 n = 0
-for fp in sorted(glob.glob("/Users/subhadipbanerjee/NP-MRD/smiles_*.csv.gz")):
+for fp in sorted(glob.glob(os.environ.get("NP_MRD_GLOB", "data/smiles_*.csv.gz"))):
     with gzip.open(fp, "rt", errors="ignore") as f:
         f.readline()
         for line in f:
@@ -85,7 +86,7 @@ print(f"npmrd: scanned {n}, kept {len(kept)} ({time.time()-T0:.0f}s)", flush=Tru
 
 # ---- 4. CMNPD ----
 n = 0
-with open("/Users/subhadipbanerjee/Downloads/summit_poc/external_test/cmnpd_table.csv", errors="ignore") as f:
+with open("/path/to/Downloads/summit_poc/external_test/cmnpd_table.csv", errors="ignore") as f:
     reader = csv.DictReader(f)
     for row in reader:
         n += 1

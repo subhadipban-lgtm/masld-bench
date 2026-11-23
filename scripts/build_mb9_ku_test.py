@@ -5,6 +5,7 @@ KU (n=56) was held out of MB-8xxx training; this builds its test prompts
 with identical builders/verbalizations so KU joins EPos+Gubra as an
 internal-validation cohort (cohort-shift robustness check).
 """
+import os
 import gzip, json, os, re, sys, time
 
 import numpy as np
@@ -15,12 +16,12 @@ SEED = 20260930
 rng = None
 import random as _random
 rng = _random.Random(SEED)
-ROOT = "/Users/subhadipbanerjee/masld-llm"
+ROOT = os.environ.get("MASLD_DATA_ROOT", ".") + ""
 sys.path.insert(0, f"{ROOT}/scripts")
 from build_mb10xx import (VERBALIZATIONS, pick, write_jsonl, top_genes,
                           clinical_block, render_profile, standardize_sample)
 
-REV = "/Users/subhadipbanerjee/masld-revision"
+REV = os.environ.get("MASLD_REVISION_DIR", "data/masld-revision")
 OUT = f"{ROOT}/prompts"
 
 

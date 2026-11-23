@@ -6,17 +6,18 @@ protocol is grouped cross-validation by patient (never split a patient across
 folds). Gate: does ANY model family beat chance/majority with a CI that
 excludes it, on ANY 86xx task?  Seed 20260929 (program seed).
 """
+import os
 import gzip, json, sys
 from collections import defaultdict
 import numpy as np
 
-sys.path.insert(0, "/Users/subhadipbanerjee/masld-llm/platform/core")
+sys.path.insert(0, os.environ.get("MASLD_PLATFORM_ROOT", "platform/core"))
 from masld_platform.features import encode_prompt, vectorise
 from masld_platform.answers import gold_value
 from masld_platform.tasks import resolve_task_type
 from masld_platform.schemas import PromptRecord, TaskType
 
-CORPUS = "/Users/subhadipbanerjee/masld-llm/prompts/MB-86xx_bloodproxy_test.jsonl.gz"
+CORPUS = os.environ.get("MASLD_DATA_ROOT", ".") + "/prompts/MB-86xx_bloodproxy_test.jsonl.gz"
 SEED = 20260929
 N_FOLDS = 5
 N_BOOT = 2000
@@ -127,7 +128,7 @@ def main():
         report[task] = entry
     report["_gate"] = {"any_family_beats_chance_or_majority": bool(any_win),
                        "seed": SEED, "protocol": f"StratifiedGroupKFold(n={N_FOLDS}) by patient; {N_BOOT} bootstraps"}
-    out = "/Users/subhadipbanerjee/masld-llm/results/c3a_gate.json"
+    out = os.environ.get("MASLD_DATA_ROOT", ".") + "/results/c3a_gate.json"
     json.dump(report, open(out, "w"), indent=2)
     print(f"GATE: {'PASS - C3 claim lives' if any_win else 'FAIL - no family beats chance/majority'}")
     print(f"written -> {out}")

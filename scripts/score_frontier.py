@@ -5,12 +5,13 @@ Usage: python3 score_frontier.py
 Reads results/frontier_runs/*.jsonl.gz, computes per-task metrics with
 bootstrap 95% CIs, and appends rows to results/leaderboard.csv.
 """
+import os
 import glob, gzip, json, os, random, sys
 
 import numpy as np
 import pandas as pd
 
-ROOT = "/Users/subhadipbanerjee/masld-llm"
+ROOT = os.environ.get("MASLD_DATA_ROOT", ".") + ""
 RUNS = f"{ROOT}/results/frontier_runs"
 OUT = f"{ROOT}/results/leaderboard.csv"
 SEED = 20260929

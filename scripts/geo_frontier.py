@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Frontier bracket on MB-40xx (geometric, 354-char prompts).
 Short prompts should clear the 402 pre-auth walls -> full roster coverage."""
+import os
 import gzip, json, os, random, re, sys, time, urllib.request, urllib.error
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 SEED = 20260929
-ROOT = "/Users/subhadipbanerjee/masld-llm"
+ROOT = os.environ.get("MASLD_DATA_ROOT", ".") + ""
 RUNS = f"{ROOT}/results/frontier_runs"
 LOG = f"{ROOT}/logs/geo_bracket.log"
 
