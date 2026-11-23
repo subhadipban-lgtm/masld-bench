@@ -9,13 +9,14 @@ Sources (audited): DrugCentral 23,115 rows (2,587 drugs x 2,500 genes, with
 ACT_VALUE affinities); DrugBank extract 35,043 rows (14,592 drugs x 4,699
 genes w/ InChIKey); CTD 41,624 rows (3,298 chemicals x 2,948 genes).
 """
+import os
 import json, os, time
 import pandas as pd
 
 T0 = time.time()
 import warnings
 warnings.filterwarnings("ignore")
-ROOT = "/Users/subhadipbanerjee/masld-llm"
+ROOT = os.environ.get("MASLD_DATA_ROOT", ".") + ""
 OUT = f"{ROOT}/prompts"
 TGT = f"{ROOT}/drug-discovery/targets"
 os.makedirs(TGT, exist_ok=True)
@@ -32,9 +33,9 @@ def write_jsonl(records, path, meta):
             f.write(json.dumps(r) + "\n")
     print(f"  {os.path.basename(path):46s} {len(records):6d} prompts")
 
-dc = pd.read_excel("/Users/subhadipbanerjee/Drug_database/DrugCentral.xlsx", sheet_name="DrugCentral")
-db = pd.read_excel("/Users/subhadipbanerjee/Drug_database/DB.xlsx", sheet_name="DB")
-ctd = pd.read_excel("/Users/subhadipbanerjee/Drug_database/CTD.xlsx", sheet_name="CTD")
+dc = pd.read_excel(os.environ.get("DRUGCENTRAL_XLSX", "data/DrugCentral.xlsx"), sheet_name="DrugCentral")
+db = pd.read_excel(os.environ.get("DB_XLSX", "data/DB.xlsx"), sheet_name="DB")
+ctd = pd.read_excel(os.environ.get("CTD_XLSX", "data/CTD.xlsx"), sheet_name="CTD")
 
 # unified target table
 dc_u = dc[["DRUG_NAME", "GENE", "ACT_VALUE"]].dropna(subset=["GENE"]).copy()

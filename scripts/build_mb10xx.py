@@ -17,6 +17,7 @@ Tasks (four formats, rotating verbalizations):
 
 Usage: python3 build_mb10xx.py
 """
+import os
 import gzip, hashlib, itertools, json, os, random, re, sys, time
 
 import numpy as np
@@ -26,8 +27,8 @@ T0 = time.time()
 SEED = 20260929
 rng = random.Random(SEED)
 
-REV = "/Users/subhadipbanerjee/masld-revision"
-OUT = "/Users/subhadipbanerjee/masld-llm/prompts"
+REV = os.environ.get("MASLD_REVISION_DIR", "data/masld-revision")
+OUT = os.environ.get("MASLD_DATA_ROOT", ".") + "/prompts"
 os.makedirs(OUT, exist_ok=True)
 
 N_SINGLE, N_PAIR = 200, 100

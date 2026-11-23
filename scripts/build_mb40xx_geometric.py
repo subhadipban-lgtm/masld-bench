@@ -15,6 +15,7 @@ measurable per patient.
 Split discipline: graph, UMAP, scalers fitted on TRAIN (Kamzolas+external)
 samples only; test patients are embedded, never used for fitting.
 """
+import os
 import gzip, json, os, random, sys, time
 import numpy as np
 import pandas as pd
@@ -23,14 +24,14 @@ T0 = time.time()
 SEED = 20260929
 rng = random.Random(SEED)
 
-ROOT = "/Users/subhadipbanerjee/masld-llm"
+ROOT = os.environ.get("MASLD_DATA_ROOT", ".") + ""
 sys.path.insert(0, f"{ROOT}/scripts")
 from build_mb10xx import (VERBALIZATIONS, pick, write_jsonl, fmt_expr,
                           standardize_sample, harmonise_kamzolas, harmonise_epos,
                           top_genes)
 
 OUT = f"{ROOT}/prompts"
-REV = "/Users/subhadipbanerjee/masld-revision"
+REV = os.environ.get("MASLD_REVISION_DIR", "data/masld-revision")
 
 N_GENES = 2000          # graph-building gene set (train-side top-variance)
 N_UMAP_NEIGHBORS = 15

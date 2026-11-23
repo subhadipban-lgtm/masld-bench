@@ -9,6 +9,7 @@ Tasks (MB-30xx), split by subject where identifiable, else by sample:
 Feature selection: top-variable CpGs on the TRAIN side only (subject split),
 CpGs referenced by ID with no gene annotation (avoids text-recoverable hints).
 """
+import os
 import gzip, json, os, random, re, sys, time
 
 import numpy as np
@@ -17,7 +18,7 @@ import pandas as pd
 T0 = time.time()
 SEED = 20260929
 rng = random.Random(SEED)
-ROOT = "/Users/subhadipbanerjee/masld-llm"
+ROOT = os.environ.get("MASLD_DATA_ROOT", ".") + ""
 sys.path.insert(0, f"{ROOT}/scripts")
 from build_freeze3 import parse_soft_meta
 

@@ -1,5 +1,30 @@
 # Changelog
 
+## Unreleased — merged `masld-llm-bench` workspace (2026-11-23)
+
+- Imported the `subhadipban-lgtm/masld-llm-bench` build workspace into this
+  repository per `MIGRATION_FROM_MASLD_LLM_BENCH.md`. Evaluation platform
+  (`platform/`), correct builders, aggregate-only result summaries, the
+  freeze-16 manifest (as historical provenance), the cohort manifest and the
+  blood-cohort search record.
+- Corrected `scripts/build_mb86xx.py` from the local freeze-8 builder to the
+  freeze-16 rebuild (2026-10-19 header off-by-one): the previous copy paired
+  every item with the preceding patient's expression.
+- Sanitised local absolute paths (including one Drive path containing a
+  personal email) across all imported and legacy scripts to
+  `MASLD_DATA_ROOT` / `MASLD_REVISION_DIR` / `MASLD_PLATFORM_ROOT` /
+  `DRIVE_DATA_DIR` defaults. No personal identifiers remain in the tree.
+- Fixed `platform/pyproject.toml` license metadata (`Proprietary` → Apache-2.0).
+- Corrected one mis-specified platform test
+  (`test_archive_model_name_decoding`: archives split on the LAST `__`).
+- The published release tag `v2026.11.10-eligible.1` is unchanged and
+  remains the current artifact; `RELEASE_MANIFEST.json` authoritative files
+  were not modified. `results/leaderboard.csv` remains historical (v7 rows are
+  trained-on-test diagnostics and are not part of the eligible roster).
+- Excluded: corpora, `frontier_runs/` archives, GEO source data, quarantine,
+  logs, docking outputs, internal Cell-strategy docs and pre-correction
+  result files. See `MIGRATION_FROM_MASLD_LLM_BENCH.md`.
+
 ## 2026.11.10-eligible.1 — local release candidate
 
 - Removed the superseded static-site scaffold (`site/`) and the October results

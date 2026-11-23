@@ -11,11 +11,12 @@ Usage:
 The key is read from the environment or a .openclaw/tmp/or_key.txt file.
 Responses are archived to results/frontier_runs/ with the model version string.
 """
+import os
 import gzip, json, os, random, re, sys, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 SEED = 20260929
-ROOT = "/Users/subhadipbanerjee/masld-llm"
+ROOT = os.environ.get("MASLD_DATA_ROOT", ".") + ""
 RUNS = f"{ROOT}/results/frontier_runs"
 os.makedirs(RUNS, exist_ok=True)
 WORKERS = 6

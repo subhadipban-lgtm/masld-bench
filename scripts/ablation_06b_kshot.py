@@ -8,7 +8,7 @@ import numpy as np
 import torch
 
 T0 = time.time()
-ROOT = "/Users/subhadipbanerjee/masld-llm"
+ROOT = os.environ.get("MASLD_DATA_ROOT", ".") + ""
 
 VARIANTS = [
     ("MB-40xx_geo_kshot2_balanced_test.jsonl.gz", "K=2 balanced"),

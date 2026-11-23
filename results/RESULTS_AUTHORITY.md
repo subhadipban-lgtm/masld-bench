@@ -21,4 +21,11 @@ substitute for the corrected eligible-analysis outputs. In particular:
   also report joint-valid sensitivity without discarding failure-aware metrics.
 
 Legacy result files elsewhere in `results/` are historical unless explicitly
-listed in `RELEASE_MANIFEST.json` as authoritative.
+listed in `RELEASE_MANIFEST.json` as authoritative. In particular,
+`results/leaderboard.csv` retains the retired `qwen3-8b-masld-v7` diagnostic
+rows (trained-on-test); those rows are excluded from the eligible roster and
+must not be cited as current results. Result files whose names imply scores
+(`first_compact_model_scores.json`, `v3_model_scores.json`,
+`v3_geo_ablation.json`, `leaderboard.csv.bak-*`) were removed as
+pre-correction. Contents imported from the `masld-llm-bench` workspace on
+2026-11-23 follow the same policy; see `MIGRATION_FROM_MASLD_LLM_BENCH.md`.

@@ -6,13 +6,14 @@ pages through results, writes drug-discovery/library/coconut_filtered.smi
 (SMILES + identifier) plus a provenance JSON.
 Target: 5,000 compounds for the first Vina screen.
 """
+import os
 import json, os, time, urllib.request
 
-OUT_DIR = "/Users/subhadipbanerjee/masld-llm/drug-discovery/library"
+OUT_DIR = os.environ.get("MASLD_DATA_ROOT", ".") + "/drug-discovery/library"
 os.makedirs(OUT_DIR, exist_ok=True)
 TARGET = 5000
 PAGE = 100
-LOG = "/Users/subhadipbanerjee/masld-llm/logs/coconut.log"
+LOG = os.environ.get("MASLD_DATA_ROOT", ".") + "/logs/coconut.log"
 
 def log(msg):
     with open(LOG, "a") as f:

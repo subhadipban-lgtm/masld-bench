@@ -12,6 +12,7 @@ New train-side cohorts (from workbench downloads, all public GEO):
 Test side stays EPos+Gubra, untouched. Output: prompts/MB-11xx_external_train.jsonl.gz
 and an updated MANIFEST (version bump v3-freeze-3).
 """
+import os
 import gzip, hashlib, io, json, os, re, sys, time
 
 import numpy as np
@@ -23,7 +24,7 @@ rng = random.Random(SEED) if False else None
 import random as _random
 rng = _random.Random(SEED)
 
-ROOT = "/Users/subhadipbanerjee/masld-llm"
+ROOT = os.environ.get("MASLD_DATA_ROOT", ".") + ""
 DATA = f"{ROOT}/data"
 MAT = f"{DATA}/matrices"
 OUT = f"{ROOT}/prompts"

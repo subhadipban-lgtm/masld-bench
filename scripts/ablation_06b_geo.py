@@ -9,12 +9,13 @@ Completes the 2x2 ablation matrix:
 Local MPS inference, newline-stopped generation, tested parser, archive +
 inline scores. ~20-40 min on M2.
 """
+import os
 import gzip, json, os, random, re, time
 import numpy as np
 import torch
 
 T0 = time.time()
-ROOT = "/Users/subhadipbanerjee/masld-llm"
+ROOT = os.environ.get("MASLD_DATA_ROOT", ".") + ""
 SEED = 20260929
 
 # --- load base + v3 adapter, merge in memory ---

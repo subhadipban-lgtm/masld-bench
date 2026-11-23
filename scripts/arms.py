@@ -41,8 +41,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RUNS = os.path.join(ROOT, "results", "frontier_runs")
 PROMPTS = os.path.join(ROOT, "prompts")
-KG = ("/Users/subhadipbanerjee/ami.subhadipbanerjee@gmail.com - Google Drive"
-      "/My Drive/kg_edges.tsv")
+KG = os.environ.get("KG_EDGES_TSV", "data/kg_edges.tsv")
 ENS = os.path.join(ROOT, "data", "ensembl_to_symbol_cache.csv")
 SEED = 20260929
 WORKERS = 8

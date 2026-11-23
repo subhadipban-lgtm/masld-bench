@@ -9,6 +9,7 @@ Corpora built here (all TRAIN-side; the frozen test remains EPos+Gubra only):
 
 Usage: python3 build_mb6xxx_8xxx.py
 """
+import os
 import gzip, hashlib, json, os, random, re, time
 
 import numpy as np
@@ -18,8 +19,8 @@ T0 = time.time()
 SEED = 20260929
 rng = random.Random(SEED)
 
-REV = "/Users/subhadipbanerjee/masld-revision"
-OUT = "/Users/subhadipbanerjee/masld-llm/prompts"
+REV = os.environ.get("MASLD_REVISION_DIR", "data/masld-revision")
+OUT = os.environ.get("MASLD_DATA_ROOT", ".") + "/prompts"
 os.makedirs(OUT, exist_ok=True)
 
 # reuse the harmonised prompt machinery from the clinical builder
