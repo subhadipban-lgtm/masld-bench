@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MASLD-Bench — Methods &amp; provenance</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="methods">
+<header class="site">
+  <div class="wrap">
+    <div class="brand">MASLD<span class="accent">-</span>Bench</div>
+    <nav class="site">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="leaderboard.html" data-page="leaderboard">Leaderboard</a>
+      <a href="methods.html" data-page="methods">Methods</a>
+      <a href="models.html" data-page="models">Models</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <h1>Methods &amp; provenance</h1>
+  <p class="lede small">What the benchmark measures, which data it uses, what was corrected, and what it does not claim.</p>
+
+  <div class="card">
+    <h2>What the benchmark is</h2>
+    <p>MASLD-Bench probes whether large language models can interpret structured biological evidence for metabolic dysfunction–associated steatotic liver disease. Prompts encode frozen, whitespace-controlled evidence packets; models answer constrained tasks. Scoring is exact-match for classification/selection and numeric tolerance for regression, with paired bootstrap intervals.</p>
+    <p>The tissue arm (this page) covers the frozen MB-20xx test family built from the GSE135251 biopsy cohort, 163 common evaluated items for binary and five-class tasks, 162 for fibrosis regression, 163 for NAS regression.</p>
+  </div>
+
+  <div class="card">
+    <h2>Eligibility and exclusions</h2>
+    <p><b>Primary roster.</b> Models with all five tissue tasks, minus three checkpoints (Qwen3-0.6B v6, Qwen3-1.7B v6, Qwen3-8B v7) whose fine-tuning mixtures contained the MB-12xx staged-liver pool overlapping GSE135251. Those three appear only as <em>exposed-data diagnostics</em> and are never eligible for ranking.</p>
+    <p><b>Common items.</b> Results are computed on archived common items only: 163 binary, 163 five-class, 162 fibrosis, 163 NAS. No re-imputation, no post-hoc swapping of labels.</p>
+    <p><b>Pairwise tasks.</b> MB-2003 item sets differ across model families. Results are grouped by exact manifest (14 models × 300 shared items; DeepSeek and Nemotron on 258 in-corpus items; Gemini 2.5 Pro on 414 items) and are <u>not</u> merged into a single ranking.</p>
+  </div>
+
+  <div class="card">
+    <h2>Corrections that produced this export</h2>
+    <ul>
+      <li>The MB-86xx blood-proxy corpus was misaligned by a header off-by-one (freeze-8); rebuilt at freeze-16. Affected v5-zeroshot cells were retired.</li>
+      <li>The historical 297-row GitHub leaderboard and 275-row Drive leaderboard are <b>not</b> the current authority; they are historical snapshots.</li>
+      <li>The five-class majority is computed from evaluated labels (43/163 = 0.264), not from the number of classes.</li>
+      <li>cfRNA label-noise: AMC-vs-UZA reader disagreement is retained per item; the 0.384 kappa and the &ldquo;13-point reader-noise ceiling&rdquo; from earlier materials are withdrawn.</li>
+      <li>Claims of &ldquo;first LLM-positive&rdquo; and &ldquo;statistically tied&rdquo; were withdrawn; equivalence is not implied by non-significance.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Reading the failure-aware MAE</h2>
+    <p>Regression answers can be missing or unparseable. <b>MAE (all, raw)</b> divides total absolute error by all items including failures. <b>MAE in-domain</b> conditions on parseable, in-domain answers. <b>MAE failure-aware</b> assigns unparseable outputs the task’s worst-case error instead of dropping them. When these diverge sharply, a model’s headline number partly reflects output formatting rather than biology.</p>
+  </div>
+
+  <div class="card">
+    <h2>Data access &amp; licensing</h2>
+    <p>The corpora are prompt packs derived from public cohorts (GSE135251 for the tissue test; cfRNA S-BSST1614 for the cfRNA arm). Source GEO/SRA data remain under their original terms; this repository distributes <em>code and aggregate results only</em>. See <code>DATA_ACCESS_AND_LICENSES.md</code> in the repo for the exact access path and redistribution limits. Nothing on this page is clinical evidence.</p>
+  </div>
+
+  <div class="card">
+    <h2>Reproduce</h2>
+    <p>With the pinned environment and a <code>MASLD_DATA_ROOT</code> holding the frozen corpora:</p>
+    <pre class="mono" style="white-space:pre-wrap">.venv/bin/python analysis/rescore_tissue_eligible.py
+.venv/bin/python -m pytest analysis/tests -q
+bash scripts/reproduce_release.sh</pre>
+    <p class="note">The release manifest <code>RELEASE_MANIFEST.json</code> records file hashes for the authoritative export.</p>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap">MASLD-Bench · <a href="https://github.com/subhadipban-lgtm/masld-bench">repository</a> · research use only.</div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
