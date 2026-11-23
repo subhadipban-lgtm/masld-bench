@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MASLD-Bench — Leaderboard (eligible roster)</title>
+<meta name="description" content="Aggregate, aggregate-only results for the MASLD-Bench eligible roster: histology-grounded omics-LLM benchmark, corrected cfRNA and tissue analysis, export 2026.11.10-eligible.1.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="leaderboard">
+<header class="site">
+  <div class="wrap">
+    <div class="brand">MASLD<span class="accent">-</span>Bench</div>
+    <nav class="site">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="leaderboard.html" data-page="leaderboard">Leaderboard</a>
+      <a href="methods.html" data-page="methods">Methods</a>
+      <a href="models.html" data-page="models">Models</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <h1>Eligible-model leaderboard</h1>
+  <p class="lede small">Aggregate results for the corrected <code>2026.11.10-eligible.1</code>
+  export. Tissue test surface is the frozen MB-20xx EPos/Gubra cohort; only models with all five
+  tissue tasks are ranked, and checkpoints exposed to the GSE135251 test split are excluded and shown
+  separately as diagnostics. Pairwise results are grouped by exact item-set manifest and are not merged
+  across manifests.</p>
+
+  <div class="card">
+    <div class="filters">
+      <label>Task
+        <select id="task-select">
+          <option value="MB-2001">MB-2001 · Binary F3–F4 vs F0–F2 (163 items)</option>
+          <option value="MB-2002">MB-2002 · Five-stage F0–F4 (163 items)</option>
+          <option value="MB-2003">MB-2003 · Pairwise comparison (manifest-grouped)</option>
+          <option value="MB-2005">MB-2005 · Fibrosis-stage regression (162 items)</option>
+          <option value="MB-2006">MB-2006 · NAS regression (163 items)</option>
+        </select>
+      </label>
+      <span id="manifest-wrap" style="display:none">
+        <label>Manifest
+          <select id="manifest-select">
+            <option value="all">All manifests (listed separately)</option>
+            <option value="pairwise_manifest_1">manifest 1 — 300 shared items (14 models)</option>
+            <option value="pairwise_manifest_2">manifest 2 — 258 in-corpus items (DeepSeek, Nemotron)</option>
+            <option value="pairwise_manifest_3">manifest 3 — 414 items (Gemini 2.5 Pro)</option>
+          </select>
+        </label>
+      </span>
+      <label>Search model <input id="model-search" type="text" placeholder="e.g. gpt-4.1" size="18"></label>
+      <button class="btn" id="export-btn">Download JSON</button>
+    </div>
+    <p class="note" id="task-note"></p>
+    <p class="note" id="lb-count"></p>
+    <div class="scroll-x">
+      <table>
+        <thead><tr id="lb-head"></tr></thead>
+        <tbody id="lb-body"></tbody>
+      </table>
+    </div>
+    <p class="note">Bold = best within the visible set for the highlighted metric. “MAE failure-aware” scores
+    unparseable answers at the worst plausible error rather than dropping them; “MAE in-domain” is computed on
+    in-domain, valid items only. Exposed-diagnostic rows are shown only on the dedicated toggle in the Methods page
+    and are never eligible for ranking.</p>
+    <p class="note">Ranking by <a href="https://github.com/subhadipban-lgtm/masld-bench">masld-bench</a> release
+    <span class="mono">v2026.11.10-eligible.1</span>. Source of these numbers:
+    <span class="mono">results/eligible/tissue_eligible_summary.tsv</span> and
+    <span class="mono">results/eligible/tissue_eligible_ranks.tsv</span> (17-model eligible roster).
+    Majority baselines: MB-2001 107/163 = 0.656; MB-2002 43/163 = 0.264 vs uniform-choice 0.200.</p>
+  </div>
+
+  <div class="card">
+    <h3>Reading this table honestly</h3>
+    <ul>
+      <li><b>Aggregate metrics only.</b> No subject-level data, prompts, or predictions are distributed on this page.</li>
+      <li><b>Exposed checkpoints are not eligible.</b> Qwen3-0.6B v6, Qwen3-1.7B v6 and Qwen3-8B v7 saw the MB-12xx training pool overlapping the test split and are excluded from ranking; their cells appear in the release as diagnostics only.</li>
+      <li><b>MB-2003 is not a single leaderboard.</b> Pairwise results are reported per item manifest; do not compare across manifests.</li>
+      <li><b>Non-significance is not equivalence.</b> Absence of a detectable difference is not evidence of no difference.</li>
+    </ul>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    MASLD-Bench · eligible export <span class="mono">2026.11.10-eligible.1</span> ·
+    <a href="https://github.com/subhadipban-lgtm/masld-bench">masld-bench</a> ·
+    research use only — not a diagnostic or clinical tool.
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+<script>
+window.MASLD_DATA = null;
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "assets/leaderboard.json", false);
+xhr.send(null);
+if (xhr.status === 200) { window.MASLD_DATA = JSON.parse(xhr.responseText); }
+</script>
+</body>
+</html>

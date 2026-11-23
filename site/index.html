@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MASLD-Bench — histology-grounded omics LLM benchmark</title>
+<meta name="description" content="MASLD-Bench: corrected, histology-grounded benchmark for LLM reasoning over liver omics. Eligible-roster leaderboard from export 2026.11.10-eligible.1.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="home">
+<header class="site">
+  <div class="wrap">
+    <div class="brand">MASLD<span class="accent">-</span>Bench</div>
+    <nav class="site">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="leaderboard.html" data-page="leaderboard">Leaderboard</a>
+      <a href="methods.html" data-page="methods">Methods</a>
+      <a href="models.html" data-page="models">Models</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>How well can language models read <span class="accent">liver omics</span>?</h1>
+    <p class="lede">MASLD-Bench measures language models on histology-grounded tasks derived from
+      the MASLD biopsy cohort. This page reports the corrected eligible-roster export —
+      the same numbers the manuscript uses.</p>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-card"><div class="kpi">17</div><div class="kpi-note">eligible models ranked</div></div>
+    <div class="kpi-card"><div class="kpi">5</div><div class="kpi-note">tissue tasks (binary, 5-class, pairwise, fibrosis regression, NAS regression)</div></div>
+    <div class="kpi-card"><div class="kpi">163</div><div class="kpi-note">common archived items per task (163 binary / 163 five-class / 162 fibrosis / 163 NAS)</div></div>
+    <div class="kpi-card"><div class="kpi">0.656</div><div class="kpi-note">majority baseline, binary MB-2001 — no eligible model beats it under accuracy</div></div>
+  </div>
+
+  <div class="card">
+    <h2>What this page shows</h2>
+    <ul>
+      <li><b>Tissue benchmark only.</b> The MB-20xx liver tasks shown here. The cfRNA and blood-cohort families are part of the benchmark but are not shown here until their corrected exports are published.</li>
+      <li><b>Corrected numbers.</b> Every cell comes from <code>results/eligible/</code> in the repo at release <span class="mono">2026.11.10-eligible.1</span>. Superseded leaderboards (297/275 rows) are retained only as historical snapshots.</li>
+      <li><b>Trained-on-test checkpoints excluded.</b> Qwen3-0.6B v6, Qwen3-1.7B v6 and Qwen3-8B v7 saw the GSE135251 test split inside the fine-tuning mixtures; they are reported as diagnostics, never ranked.</li>
+      <li><b>Pairwise tasks are manifest-grouped.</b> MB-2003 item sets differ by model family; results are not comparable across manifests and are never merged.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Headline read-out</h2>
+    <ul>
+      <li><b>Binary (MB-2001).</b> No eligible model exceeds the 0.656 majority baseline; the leaders tie it.</li>
+      <li><b>Five-class (MB-2002).</b> Best eligible result is 0.276 (Nemotron 3 Super 120B) vs a 0.264 majority baseline and 0.200 uniform-choice chance.</li>
+      <li><b>Fibrosis regression (MB-2005).</b> The fine-tuned Qwen3-1.7B v5 leads on failure-aware MAE (1.142); Gemini 2.5 Pro produced no parseable answers on this task.</li>
+      <li><b>NAS regression (MB-2006).</b> See the leaderboard; regression rows report conditional and failure-aware MAE and refresh-limited Spearman.</li>
+    </ul>
+    <p class="note">Figures on this page are generated from the release export; If they disagree with anything else online, the repo is authoritative.</p>
+  </div>
+
+  <div class="card">
+    <h2>Status</h2>
+    <p>Research use only — not a diagnostic or clinical tool. Model access, particularly to fine-tuned checkpoints, is gated pending publication and author approval. See <a href="methods.html">Methods</a> for scope, corrections, and provenance, or the <a href="https://github.com/subhadipban-lgtm/masld-bench">repository</a> for code and exports.</p>
+  </div>
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    MASLD-Bench · eligible export <span class="mono">2026.11.10-eligible.1</span> ·
+    <a href="leaderboard.html">Leaderboard</a> ·
+    <a href="methods.html">Methods</a> ·
+    <a href="https://github.com/subhadipban-lgtm/masld-bench">GitHub</a>
+  </div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MASLD-Bench — Models</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="models">
+<header class="site">
+  <div class="wrap">
+    <div class="brand">MASLD<span class="accent">-</span>Bench</div>
+    <nav class="site">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="leaderboard.html" data-page="leaderboard">Leaderboard</a>
+      <a href="methods.html" data-page="methods">Methods</a>
+      <a href="models.html" data-page="models">Models</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <h1>Models on this benchmark</h1>
+  <p class="lede small">Every model below was evaluated on the identical frozen MB-20xx prompts. “Access” reflects current availability, not endorsement.</p>
+
+  <table class="compact">
+    <thead><tr><th>Model</th><th>Provider / origin</th><th>Type</th><th>Access</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">qwen3-0.6b-masld / 1.7b-masld</td><td>Alibaba Qwen3, MASLD-SFT</td><td>0.6B / 1.7B</td><td>gated on Hugging Face</td><td>Trained on MASLD mixtures without the GSE135251 test split (v3 family).</td></tr>
+      <tr><td class="mono">qwen3-*-masld-v5</td><td>MASLD-SFT v5</td><td>0.6B / 1.7B</td><td>gated on Hugging Face</td><td>v5 training recipe; eligible.</td></tr>
+      <tr><td class="mono">qwen3-*-masld-v6 / 8b-v7</td><td>MASLD-SFT v6/v7</td><td>0.6B / 1.7B / 8B</td><td>private</td><td>v6/v7 mixtures contain the GSE135251 test split — <b>exposed; excluded from the primary roster</b>.</td></tr>
+      <tr><td class="mono">qwen__qwen3-235b-a22b-2507</td><td>Alibaba</td><td>235B MoE</td><td>API</td><td>MB-2003 evaluated on 14-item manifest (414 items); insufficient valid on regression.</td></tr>
+      <tr><td class="mono">qwen__qwen-2.5-72b-instruct</td><td>Alibaba</td><td>72B</td><td>API</td><td>API-evaluated.</td></tr>
+      <tr><td class="mono">deepseek__deepseek-chat</td><td>DeepSeek</td><td>API</td><td>API</td><td>Pairwise manifest 2 (258 items).</td></tr>
+      <tr><td class="mono">nvidia__nemotron-3-super-120b-a12b:free</td><td>NVIDIA</td><td>120B MoE</td><td>API (free tier)</td><td>Pairwise manifest 2.</td></tr>
+      <tr><td class="mono">google__gemini-2.5-pro</td><td>Google</td><td>API</td><td>API</td><td>Pairwise manifest 3 (414 items); zero valid on fibrosis regression.</td></tr>
+      <tr><td class="mono">openai__gpt-4.1 / 4.1-mini / 4o-mini</td><td>OpenAI</td><td>API</td><td>API</td><td>API-evaluated.</td></tr>
+      <tr><td class="mono">openai__gpt-5.6-luna</td><td>OpenAI</td><td>API</td><td>API</td><td>Very low completion rates; many task cells are not meaningful.</td></tr>
+      <tr><td class="mono">anthropic__claude-sonnet-4.5</td><td>Anthropic</td><td>API</td><td>API</td><td>API-evaluated.</td></tr>
+      <tr><td class="mono">meta-llama__llama-3.3-70b-instruct</td><td>Meta</td><td>70B</td><td>API</td><td>API-evaluated.</td></tr>
+      <tr><td class="mono">amazon__nova-pro-v1</td><td>Amazon</td><td>API</td><td>API</td><td>API-evaluated.</td></tr>
+      <tr><td class="mono">inception__mercury-2.5</td><td>Inception</td><td>API</td><td>API</td><td>Diffusion-LLM; API-evaluated.</td></tr>
+    </tbody>
+  </table>
+
+  <p class="note">“API” denotes commercial API access at evaluation time; provider model revisions may change. Gate counts and item sets are recorded per manifest in <code>results/eligible/</code>. No model weights or proprietary outputs are redistributed on this page.</p>
+</div>
+
+<footer class="site">
+  <div class="wrap">MASLD-Bench · <a href="https://github.com/subhadipban-lgtm/masld-bench">repository</a> · research use only.</div>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>
