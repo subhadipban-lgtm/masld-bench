@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MASLD-Bench — histology-grounded omics LLM benchmark</title>
-<meta name="description" content="MASLD-Bench: corrected, histology-grounded benchmark for LLM reasoning over liver omics. Eligible-roster leaderboard from export 2026.11.10-eligible.1.">
+<meta name="description" content="MASLD-Bench: corrected, histology-grounded benchmark for LLM reasoning over liver omics. Eligible-roster leaderboard from export 2026.11.10-eligible.1. Code on GitHub, archival release on Zenodo, fine-tuned checkpoints on Hugging Face.">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body data-page="home">
@@ -26,6 +26,11 @@
     <p class="lede">MASLD-Bench measures language models on histology-grounded tasks derived from
       the MASLD biopsy cohort. This page reports the corrected eligible-roster export —
       the same numbers the manuscript uses.</p>
+    <p class="lede small">
+      <a href="https://doi.org/10.5281/zenodo.24373776">Zenodo DOI 10.5281/zenodo.24373776</a> ·
+      <a href="https://github.com/subhadipban-lgtm/masld-bench">GitHub repository</a> ·
+      <a href="https://huggingface.co/Subhadip-igtm">Hugging Face checkpoints</a>
+    </p>
   </div>
 
   <div class="kpi-row">
@@ -33,6 +38,11 @@
     <div class="kpi-card"><div class="kpi">5</div><div class="kpi-note">tissue tasks (binary, 5-class, pairwise, fibrosis regression, NAS regression)</div></div>
     <div class="kpi-card"><div class="kpi">163</div><div class="kpi-note">common archived items per task (163 binary / 163 five-class / 162 fibrosis / 163 NAS)</div></div>
     <div class="kpi-card"><div class="kpi">0.656</div><div class="kpi-note">majority baseline, binary MB-2001 — no eligible model beats it under accuracy</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Cite, download, reproduce</h2>
+    <div data-masld-resources></div>
   </div>
 
   <div class="card">
@@ -53,7 +63,7 @@
       <li><b>Fibrosis regression (MB-2005).</b> The fine-tuned Qwen3-1.7B v5 leads on failure-aware MAE (1.142); Gemini 2.5 Pro produced no parseable answers on this task.</li>
       <li><b>NAS regression (MB-2006).</b> See the leaderboard; regression rows report conditional and failure-aware MAE and refresh-limited Spearman.</li>
     </ul>
-    <p class="note">Figures on this page are generated from the release export; If they disagree with anything else online, the repo is authoritative.</p>
+    <p class="note">Figures on this page are generated from the release export; if they disagree with anything else online, the repo is authoritative.</p>
   </div>
 
   <div class="card">
@@ -65,6 +75,8 @@
 <footer class="site">
   <div class="wrap">
     MASLD-Bench · eligible export <span class="mono">2026.11.10-eligible.1</span> ·
+    <a href="https://doi.org/10.5281/zenodo.24373776">Zenodo</a> ·
+    <a href="https://huggingface.co/Subhadip-igtm">Hugging Face</a> ·
     <a href="leaderboard.html">Leaderboard</a> ·
     <a href="methods.html">Methods</a> ·
     <a href="https://github.com/subhadipban-lgtm/masld-bench">GitHub</a>

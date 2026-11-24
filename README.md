@@ -1,8 +1,31 @@
 # MASLD-Bench — authoritative analysis release
 
 **Release candidate:** `2026.11.10-eligible.1`  
+**Archival DOI:** [10.5281/zenodo.24373776](https://doi.org/10.5281/zenodo.24373776)  
+**Project page:** <https://subhadipban-lgtm.github.io/masld-bench/>  
+**Fine-tuned checkpoints:** <https://huggingface.co/Subhadip-igtm>  
 **Status:** local review candidate; not yet published or pushed.  
 **Research use only — not a diagnostic or clinical tool.**
+
+## Resources
+
+| Resource | Location | Contents |
+|---|---|---|
+| Code & aggregate export | [GitHub](https://github.com/subhadipban-lgtm/masld-bench) | analysis code, `results/eligible/`, tests, reproduction pipeline |
+| Archival release (DOI) | [Zenodo 10.5281/zenodo.24373776](https://doi.org/10.5281/zenodo.24373776) | versioned snapshot of this release with file hashes |
+| Leaderboard & methods | [Project page](https://subhadipban-lgtm.github.io/masld-bench/) | eligible-roster leaderboard, methods, model status |
+| Fine-tuned checkpoints | [Hugging Face `Subhadip-igtm`](https://huggingface.co/Subhadip-igtm) | Qwen3 v6/v7 merged weights + LoRA adapters (exposed diagnostics) |
+
+## Fine-tuned checkpoints (Hugging Face)
+
+| Checkpoint | Base | Artifact | Eligibility |
+|---|---|---|---|
+| [`masld-bench-qwen3-8b-sft-v7`](https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-8b-sft-v7) | Qwen3-8B | merged weights | exposed diagnostic — not ranked |
+| [`masld-bench-qwen3-8b-sft-v7-adapter`](https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-8b-sft-v7-adapter) | Qwen3-8B | QLoRA adapter | exposed diagnostic — not ranked |
+| [`masld-bench-qwen3-1.7b-sft-v6`](https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-1.7b-sft-v6) | Qwen3-1.7B | merged weights | exposed diagnostic — not ranked |
+| [`masld-bench-qwen3-1.7b-sft-v6-adapter`](https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-1.7b-sft-v6-adapter) | Qwen3-1.7B | LoRA adapter | exposed diagnostic — not ranked |
+
+The v6/v7 training mixtures contained the MB-12xx staged-liver pool, which overlaps the GSE135251 tissue test split. These checkpoints are released for reproducibility and diagnostic use only and are excluded from the eligible roster. The v3/v5 checkpoints are gated and not public.
 
 This branch contains the corrected cfRNA analysis and the eligible-model tissue
 analysis. It does not treat the historical 297-row or 275-row leaderboards as

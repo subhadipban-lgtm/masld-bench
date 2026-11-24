@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MASLD-Bench — Models</title>
+<title>MASLD-Bench — Models &amp; checkpoints</title>
+<meta name="description" content="Every model evaluated on MASLD-Bench, with provider, access route and eligibility status. Fine-tuned Qwen3 checkpoints are hosted on Hugging Face (Subhadip-igtm).">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body data-page="models">
@@ -20,34 +21,81 @@
 </header>
 
 <div class="wrap">
-  <h1>Models on this benchmark</h1>
-  <p class="lede small">Every model below was evaluated on the identical frozen MB-20xx prompts. “Access” reflects current availability, not endorsement.</p>
+  <h1>Models &amp; checkpoints</h1>
+  <p class="lede small">Every model below was evaluated on the identical frozen MB-20xx prompts. “Access” reflects current availability, not endorsement.
+  Checkpoints whose fine-tuning mixture contained the GSE135251 test split are marked <span class="pill warn">exposed diagnostic</span> and are never ranked.</p>
 
-  <table class="compact">
-    <thead><tr><th>Model</th><th>Provider / origin</th><th>Type</th><th>Access</th><th>Notes</th></tr></thead>
-    <tbody>
-      <tr><td class="mono">qwen3-0.6b-masld / 1.7b-masld</td><td>Alibaba Qwen3, MASLD-SFT</td><td>0.6B / 1.7B</td><td>gated on Hugging Face</td><td>Trained on MASLD mixtures without the GSE135251 test split (v3 family).</td></tr>
-      <tr><td class="mono">qwen3-*-masld-v5</td><td>MASLD-SFT v5</td><td>0.6B / 1.7B</td><td>gated on Hugging Face</td><td>v5 training recipe; eligible.</td></tr>
-      <tr><td class="mono">qwen3-*-masld-v6 / 8b-v7</td><td>MASLD-SFT v6/v7</td><td>0.6B / 1.7B / 8B</td><td>private</td><td>v6/v7 mixtures contain the GSE135251 test split — <b>exposed; excluded from the primary roster</b>.</td></tr>
-      <tr><td class="mono">qwen__qwen3-235b-a22b-2507</td><td>Alibaba</td><td>235B MoE</td><td>API</td><td>MB-2003 evaluated on 14-item manifest (414 items); insufficient valid on regression.</td></tr>
-      <tr><td class="mono">qwen__qwen-2.5-72b-instruct</td><td>Alibaba</td><td>72B</td><td>API</td><td>API-evaluated.</td></tr>
-      <tr><td class="mono">deepseek__deepseek-chat</td><td>DeepSeek</td><td>API</td><td>API</td><td>Pairwise manifest 2 (258 items).</td></tr>
-      <tr><td class="mono">nvidia__nemotron-3-super-120b-a12b:free</td><td>NVIDIA</td><td>120B MoE</td><td>API (free tier)</td><td>Pairwise manifest 2.</td></tr>
-      <tr><td class="mono">google__gemini-2.5-pro</td><td>Google</td><td>API</td><td>API</td><td>Pairwise manifest 3 (414 items); zero valid on fibrosis regression.</td></tr>
-      <tr><td class="mono">openai__gpt-4.1 / 4.1-mini / 4o-mini</td><td>OpenAI</td><td>API</td><td>API</td><td>API-evaluated.</td></tr>
-      <tr><td class="mono">openai__gpt-5.6-luna</td><td>OpenAI</td><td>API</td><td>API</td><td>Very low completion rates; many task cells are not meaningful.</td></tr>
-      <tr><td class="mono">anthropic__claude-sonnet-4.5</td><td>Anthropic</td><td>API</td><td>API</td><td>API-evaluated.</td></tr>
-      <tr><td class="mono">meta-llama__llama-3.3-70b-instruct</td><td>Meta</td><td>70B</td><td>API</td><td>API-evaluated.</td></tr>
-      <tr><td class="mono">amazon__nova-pro-v1</td><td>Amazon</td><td>API</td><td>API</td><td>API-evaluated.</td></tr>
-      <tr><td class="mono">inception__mercury-2.5</td><td>Inception</td><td>API</td><td>API</td><td>Diffusion-LLM; API-evaluated.</td></tr>
-    </tbody>
-  </table>
+  <div class="card">
+    <h2>Fine-tuned checkpoints on Hugging Face</h2>
+    <p class="small">Namespace <a href="https://huggingface.co/Subhadip-igtm" class="mono">Subhadip-igtm</a>. Each recipe is published twice: merged weights ready for inference, and the LoRA adapter for reproducibility. All four v6/v7 checkpoints are <b>exposed</b> (their training mixtures included the MB-12xx staged-liver pool, which overlaps the GSE135251 test split) and are therefore excluded from the eligible roster.</p>
+    <div class="scroll-x">
+    <table class="compact">
+      <thead><tr><th>Checkpoint</th><th>Base model</th><th>Method</th><th>Eligibility</th><th>Links</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><a href="https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-8b-sft-v7" class="mono">masld-bench-qwen3-8b-sft-v7</a><br><span class="note">merged weights</span></td>
+          <td class="mono">Qwen/Qwen3-8B</td><td>QLoRA 4-bit NF4, r=32</td>
+          <td><span class="pill warn">exposed diagnostic</span></td>
+          <td><a href="https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-8b-sft-v7">model card</a> · <a href="https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-8b-sft-v7/tree/main">files</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-8b-sft-v7-adapter" class="mono">masld-bench-qwen3-8b-sft-v7-adapter</a><br><span class="note">LoRA adapter</span></td>
+          <td class="mono">Qwen/Qwen3-8B</td><td>QLoRA 4-bit NF4, r=32</td>
+          <td><span class="pill warn">exposed diagnostic</span></td>
+          <td><a href="https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-8b-sft-v7-adapter">model card</a> · <a href="https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-8b-sft-v7-adapter/tree/main">files</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-1.7b-sft-v6" class="mono">masld-bench-qwen3-1.7b-sft-v6</a><br><span class="note">merged weights</span></td>
+          <td class="mono">Qwen/Qwen3-1.7B</td><td>LoRA, r=32</td>
+          <td><span class="pill warn">exposed diagnostic</span></td>
+          <td><a href="https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-1.7b-sft-v6">model card</a> · <a href="https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-1.7b-sft-v6/tree/main">files</a></td>
+        </tr>
+        <tr>
+          <td><a href="https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-1.7b-sft-v6-adapter" class="mono">masld-bench-qwen3-1.7b-sft-v6-adapter</a><br><span class="note">LoRA adapter</span></td>
+          <td class="mono">Qwen/Qwen3-1.7B</td><td>LoRA, r=32</td>
+          <td><span class="pill warn">exposed diagnostic</span></td>
+          <td><a href="https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-1.7b-sft-v6-adapter">model card</a> · <a href="https://huggingface.co/Subhadip-igtm/masld-bench-qwen3-1.7b-sft-v6-adapter/tree/main">files</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note">The v5 checkpoints (the only fine-tuned models eligible for ranking) are gated and not yet public. They will be added here when access is approved. No weights for v3/v5 are redistributed from this page.</p>
+  </div>
 
-  <p class="note">“API” denotes commercial API access at evaluation time; provider model revisions may change. Gate counts and item sets are recorded per manifest in <code>results/eligible/</code>. No model weights or proprietary outputs are redistributed on this page.</p>
+  <div class="card">
+    <h2>All evaluated models</h2>
+    <div class="scroll-x">
+    <table class="compact">
+      <thead><tr><th>Model</th><th>Provider / origin</th><th>Type</th><th>Access</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">qwen3-0.6b-masld / 1.7b-masld</td><td>Alibaba Qwen3, MASLD-SFT</td><td>0.6B / 1.7B</td><td>gated on Hugging Face</td><td>Trained on MASLD mixtures without the GSE135251 test split (v3 family).</td></tr>
+        <tr><td class="mono">qwen3-*-masld-v5</td><td>MASLD-SFT v5</td><td>0.6B / 1.7B</td><td>gated on Hugging Face</td><td>v5 training recipe; eligible.</td></tr>
+        <tr class="exposed"><td class="mono">qwen3-*-masld-v6 / 8b-v7</td><td>MASLD-SFT v6/v7</td><td>0.6B / 1.7B / 8B</td><td><a href="https://huggingface.co/Subhadip-igtm">public on Hugging Face</a></td><td>v6/v7 mixtures contain the GSE135251 test split — <b>exposed; excluded from the primary roster</b>. See table above.</td></tr>
+        <tr><td class="mono">qwen__qwen3-235b-a22b-2507</td><td>Alibaba</td><td>235B MoE</td><td>API</td><td>MB-2003 evaluated on 14-item manifest (414 items); insufficient valid on regression.</td></tr>
+        <tr><td class="mono">qwen__qwen-2.5-72b-instruct</td><td>Alibaba</td><td>72B</td><td>API</td><td>API-evaluated.</td></tr>
+        <tr><td class="mono">deepseek__deepseek-chat</td><td>DeepSeek</td><td>API</td><td>API</td><td>Pairwise manifest 2 (258 items).</td></tr>
+        <tr><td class="mono">nvidia__nemotron-3-super-120b-a12b:free</td><td>NVIDIA</td><td>120B MoE</td><td>API (free tier)</td><td>Pairwise manifest 2.</td></tr>
+        <tr><td class="mono">google__gemini-2.5-pro</td><td>Google</td><td>API</td><td>API</td><td>Pairwise manifest 3 (414 items); zero valid on fibrosis regression.</td></tr>
+        <tr><td class="mono">openai__gpt-4.1 / 4.1-mini / 4o-mini</td><td>OpenAI</td><td>API</td><td>API</td><td>API-evaluated.</td></tr>
+        <tr><td class="mono">openai__gpt-5.6-luna</td><td>OpenAI</td><td>API</td><td>API</td><td>Very low completion rates; many task cells are not meaningful.</td></tr>
+        <tr><td class="mono">anthropic__claude-sonnet-4.5</td><td>Anthropic</td><td>API</td><td>API</td><td>API-evaluated.</td></tr>
+        <tr><td class="mono">meta-llama__llama-3.3-70b-instruct</td><td>Meta</td><td>70B</td><td>API</td><td>API-evaluated.</td></tr>
+        <tr><td class="mono">amazon__nova-pro-v1</td><td>Amazon</td><td>API</td><td>API</td><td>API-evaluated.</td></tr>
+        <tr><td class="mono">inception__mercury-2.5</td><td>Inception</td><td>API</td><td>API</td><td>Diffusion-LLM; API-evaluated.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note">“API” denotes commercial API access at evaluation time; provider model revisions may change. Gate counts and item sets are recorded per manifest in <code>results/eligible/</code>. No proprietary outputs are redistributed on this page.</p>
+  </div>
+
+  <div class="card">
+    <h2>Cite &amp; download</h2>
+    <div data-masld-resources></div>
+  </div>
 </div>
 
 <footer class="site">
-  <div class="wrap">MASLD-Bench · <a href="https://github.com/subhadipban-lgtm/masld-bench">repository</a> · research use only.</div>
+  <div class="wrap">MASLD-Bench · <a href="https://doi.org/10.5281/zenodo.24373776">Zenodo</a> · <a href="https://huggingface.co/Subhadip-igtm">Hugging Face</a> · <a href="https://github.com/subhadipban-lgtm/masld-bench">repository</a> · research use only.</div>
 </footer>
 <script src="assets/app.js"></script>
 </body>
